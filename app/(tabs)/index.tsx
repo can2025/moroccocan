@@ -61,11 +61,6 @@ export default function HomeScreen() {
       <Text style={styles.title}>CAN 2025 Morocco</Text>
       <Text style={styles.subtitle}>Africa Cup of Nations</Text>
     </View>
-    <Image
-      source={{ uri: 'https://www.cafonline.com/media/sa4cpure/afcon2025_logo_land_color-v1.png' }}
-      style={styles.logo}
-      
-    />
   </View>
 </LinearGradient>
 
