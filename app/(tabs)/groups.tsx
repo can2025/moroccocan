@@ -177,9 +177,9 @@ export default function GroupsScreen() {
                       <Text style={styles.teamName}>{team.name}</Text>
                     </View>
                     <Text style={styles.cell}>{team.mp}</Text>
-                    <Text style={[styles.cell, styles.pointsCell]}>{team.pts}</Text>
                     <Text style={styles.cell}>{team.gf}</Text>
                     <Text style={styles.cell}>{team.ga}</Text>
+                    <Text style={[styles.cell, styles.pointsCell]}>{team.pts}</Text>
                   </View>
                 ))}
               </View>
