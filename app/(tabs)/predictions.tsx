@@ -191,7 +191,7 @@ export default function PredictionsScreen() {
                   <View style={styles.predictionContainer}>
                     <TextInput
                       style={styles.scoreInput}
-                      placeholder="O"
+                      placeholder="0"
                       placeholderTextColor="#9CA3AF"
                       value={predictions[match.id]?.homeScore || ''}
                       onChangeText={(value) => handlePredictionChange(match.id, 'homeScore', value)}
