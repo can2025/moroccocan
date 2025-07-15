@@ -191,6 +191,19 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row', // aligns children side by side
+  },
+  box1: {
+    flex: 1,
+    backgroundColor: 'lightblue',
+    padding: 20,
+  },
+  box2: {
+    flex: 1,
+    backgroundColor: 'lightcoral',
+    padding: 20,
+  },
+  container: {
     flex: 1,
     backgroundColor: '#190504',
   },
