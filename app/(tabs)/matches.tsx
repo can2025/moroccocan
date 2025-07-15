@@ -77,7 +77,7 @@ const matches = [
     homeFlag: 'TU',
     awayFlag: 'OG',
     date: 'Dec 23',
-    time: '13:00',
+    time: '15:30',
     venue: 'Fes Stadium',
     city: 'Fes',
     group: 'Group C',
