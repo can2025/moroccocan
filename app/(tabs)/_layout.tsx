@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { Chrome as Home, Calendar, Users, MapPin, Target } from 'lucide-react-native';
 
 export default function TabLayout() {
