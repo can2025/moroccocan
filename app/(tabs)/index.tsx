@@ -54,18 +54,18 @@ export default function HomeScreen() {
      <LinearGradient
   colors={['#2b0d0d', '#190504']}
   style={styles.header}
->
-  <View style={styles.headerContent, }>
-  <View style={{flexDirection: 'row'}}>
+
+  <View style={styles.headerContent}>
+  <View style={styles.textContainer}>
     <View style={styles.texts}>
-      <Image
+      <Text style={styles.title}>CAN 2025 Morocco</Text>
+      <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+    </View>
+    <Image
       source={require('../../assets/images/afcon2025.png')}
       style={{ width: 100, height: 80 }}
       resizeMode="contain"
     />
-      <Text style={styles.title}>CAN 2025 Morocco</Text>
-      <Text style={styles.subtitle}>Africa Cup of Nations</Text>
-    </View>
   </View>
 </View>
 </LinearGradient> 
