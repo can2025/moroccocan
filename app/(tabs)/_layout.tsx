@@ -63,8 +63,7 @@ export default function TabLayout() {
         options={{
           title: 'Predictions',
           tabBarIcon: ({ size, color }) => (
-    
-            <AntDesign name="Trophy" size={size} color="white" />
+            <Ionicons name="trophy-outline" size={size} color="white" />
           ),
         }}
       />
