@@ -99,7 +99,7 @@ export default function HomeScreen() {
                 <View style={styles.teamContainer}>
                   <Text style={styles.score}>{match.awayScore}</Text>
                   <Text style={styles.teamName}>{match.awayTeam}</Text>
-                  <Flag code={match.awayTeam} size={32} />
+                  <Flag code='tn' size={32} />
                 </View>
               </View>
               
