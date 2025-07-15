@@ -3,7 +3,6 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Play, MapPin, Trophy, Clock } from 'lucide-react-native';
-import FlagIcon from '@/components/FlagIcon';
 import Flag from 'react-world-flags';
 
 const upcomingMatches = [
