@@ -101,7 +101,7 @@ const matches = [
     homeTeam: 'DR Congo',
     awayTeam: 'Benin',
     homeFlag: 'CD',
-    awayFlag: 'BN',
+    awayFlag: 'BJ',
     date: 'Dec 23',
     time: '18:00',
     venue: 'Ibn Batouta Stadium',
