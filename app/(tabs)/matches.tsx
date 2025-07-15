@@ -91,7 +91,7 @@ const matches = [
     awayFlag: 'UG',
     date: 'Dec 23',
     time: '18:00',
-    venue: 'Moulay Abdellah Sports Complex',
+    venue: 'Tangier Stadium',
     city: 'Rabat',
     group: 'Group D',
     status: 'upcoming',
