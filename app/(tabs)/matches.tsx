@@ -65,7 +65,7 @@ const matches = [
     awayFlag: '🇦🇴',
     date: 'Dec 23',
     time: '13:00',
-    venue: 'Marrakesh Stadium',
+    venue: 'Fes Stadium',
     city: 'Marrakech',
     group: 'Group B',
     status: 'upcoming',
