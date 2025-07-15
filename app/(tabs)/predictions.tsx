@@ -13,7 +13,7 @@ const upcomingMatches = [
     date: 'Dec 21',
     time: '20:00 GMT',
     venue: 'Moulay Abdellah Stadium',
-    city: 'Marrakech',
+    city: 'Rabat',
   },
   {
     id: 2,
