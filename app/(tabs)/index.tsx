@@ -58,7 +58,7 @@ export default function HomeScreen() {
   <View style={styles.headerContent}>
     <View style={styles.textContainer}>
       <Image
-        source={require('../assets/images/icon.png')} // Replace with your actual image path
+        source={require('/assets/images/icon.png')} // Replace with your actual image path
         style={styles.logo}
         resizeMode="contain"
       />
