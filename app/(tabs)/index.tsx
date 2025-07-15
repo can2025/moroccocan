@@ -87,8 +87,7 @@ export default function HomeScreen() {
               
               <View style={styles.matchInfo}>
                 <View style={styles.teamContainer}>
-                  <Flag code="ma" style={{ width: 32, height: 32 }} />
-                  <span className={`flag-icon flag-icon-us`} />
+                  <span className={`flag-icon flag-icon-ma`} />
                   <Text style={styles.teamName}>{match.homeTeam}</Text>
                   <Text style={styles.score}>{match.homeScore}</Text>
                 </View>
