@@ -51,7 +51,7 @@ const matches = [
     homeFlag: '🇿🇦',
     awayFlag: '🇦🇴',
     date: 'Dec 22',
-    time: '20:00',
+    time: '20:30',
     venue: 'Marrakesh Stadium',
     city: 'Marrakech',
     group: 'Group B',
