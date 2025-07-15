@@ -5,7 +5,7 @@ export const matches = [
     homeTeam: 'Morocco',
     awayTeam: 'Comoros',
     homeFlag: 'ma',
-    awayFlag: '🇰🇲',
+    awayFlag: 'km',
     date: '2025-12-21',
     time: '20:00',
     venue: 'Prince Moulay Abdellah Stadium',
