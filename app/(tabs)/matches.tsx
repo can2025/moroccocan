@@ -92,7 +92,7 @@ const matches = [
     date: 'Dec 23',
     time: '18:00',
     venue: 'Tangier Stadium',
-    city: 'Rabat',
+    city: 'Tangier',
     group: 'Group D',
     status: 'upcoming',
   },
