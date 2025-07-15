@@ -26,7 +26,8 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="home" size={size} color={color} />
+            
+            <Entypo name="home" size={size} color={color} />
           ),
         }}
       />
