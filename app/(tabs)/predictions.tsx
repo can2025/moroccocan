@@ -66,8 +66,6 @@ const upcomingMatches = [
     time: '13:00',
     venue: 'Fes Stadium',
     city: 'Fes',
-    group: 'Group C',
-    status: 'upcoming',
   },
   {
     id: 6,
