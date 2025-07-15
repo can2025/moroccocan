@@ -8,7 +8,7 @@ const cities = [
     name: 'Marrakech',
     isActive: true,
     heritage: 'Marrakech – The Red City Awaits You! Step into the vibrant heart of Morocco in Marrakech, a city where ancient traditions and modern energy collide. From the bustling souks of the Medina to the majestic Koutoubia Mosque and the lively Jemaa el-Fnaa square, Marrakech offers an unforgettable cultural experience. AFCON fans can enjoy not only the excitement of football but also the warm hospitality, rich flavors, and iconic red architecture that make this city truly unique. Discover world-class cuisine, breathtaking gardens, and centuries-old palaces – all under the glowing Moroccan sun. Marrakech is more than a destination – it’s a celebration of life.',
-    football: 'Marrakech has a rich football history with the Stade de Marrakech being one of Morocco\'s premier football venues. The city\'s local club, Kawkab Marrakech, has contributed significantly to Moroccan football, winning national championships and showcasing Morocco\'s passion for the beautiful game.',
+    football: 'Marrakech isn’t just a city of history, colors, and culture – it’s also a city that lives and breathes football. From lively street matches in local neighborhoods to passionate fans filling stadiums, the love for the beautiful game runs deep here. Home to the iconic Grand Stade de Marrakech, the city has hosted major African and international matches, welcoming fans from across the continent with open arms. As AFCON fever takes over, Marrakech offers an unbeatable mix of thrilling football moments and unforgettable cultural experiences – all in the heart of Morocco.',
     stadium: 'Marrakesh Stadium',
     capacity: '41,245',
     images: [
