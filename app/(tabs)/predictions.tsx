@@ -105,6 +105,7 @@ const upcomingMatches = [
     time: '20:30',
     venue: 'Al Barid Stadium',
     city: 'Rabat',
+  },
   {
     id: 9,
     homeTeam: 'DR Congo',
