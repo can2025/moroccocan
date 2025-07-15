@@ -55,7 +55,7 @@ export default function HomeScreen() {
   colors={['#2b0d0d', '#190504']}
   style={styles.header}
 >
-  <View style={styles.headerContent}>
+  <View style={{flexDirection: 'row', alignItems: 'center', padding: 10}}>
   <View style={styles.textContainer}>
     <View style={styles.texts}>
       <Image
