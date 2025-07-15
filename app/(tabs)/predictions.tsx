@@ -27,8 +27,6 @@ const upcomingMatches = [
     time: '15:30',
     venue: 'Mohammed V Stadium',
     city: 'Casablanca',
-    group: 'Group A',
-    status: 'upcoming',
   },
   {
     id: 3,
