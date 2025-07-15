@@ -49,7 +49,7 @@ const matches = [
     id: 4,
     homeTeam: 'South Africa',
     awayTeam: 'Angola',
-    homeFlag: '🇿🇦f',
+    homeFlag: 'za',
     awayFlag: 'ago',
     date: 'Dec 22',
     time: '20:30',
