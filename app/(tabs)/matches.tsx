@@ -91,7 +91,7 @@ const matches = [
     awayFlag: 'UG',
     date: 'Dec 23',
     time: '18:00',
-    venue: 'Tangier Stadium',
+    venue: 'Ibn Batouta Stadium',
     city: 'Tangier',
     group: 'Group D',
     status: 'upcoming',
