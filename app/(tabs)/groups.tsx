@@ -68,10 +68,10 @@ const groupsData = {
     { name: 'Sudan', flag: 'sd', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
   ],
   'Group F': [
-    { name: 'Ivory Coast', flag: '🇨🇮', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Cameroon', flag: '🇨🇲', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Gabon', flag: '🇬🇦', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Mozambique', flag: '🇲🇿', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
+    { name: 'Ivory Coast', flag: 'ci', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
+    { name: 'Cameroon', flag: 'cm', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
+    { name: 'Gabon', flag: 'ga', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
+    { name: 'Mozambique', flag: 'mz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
   ],
 };
 
