@@ -86,7 +86,7 @@ export default function HomeScreen() {
               
               <View style={styles.matchInfo}>
                 <View style={styles.teamContainer}>
-                  <Flag code='{match.homeTeam}' style={{ width: 32, height: 32, margin: '10px' }} />
+                  <Flag code='ng' style={{ width: 32, height: 32, margin: '10px' }} />
                   <Text style={styles.teamName}>{match.homeTeam}</Text>
                   <Text style={styles.score}>{match.homeScore}</Text>
                 </View>
