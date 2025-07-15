@@ -93,7 +93,7 @@ export default function HomeScreen() {
                 
                 <View style={styles.teamContainer}>
                   <Text style={styles.score}>{match.awayScore}</Text>
-                  <Text style={[styles.teamName, { marginRight: 10 }]}>{match.awayTeam}</Text>
+                  <Text style={[styles.teamName, { margin: 10 }]}>{match.awayTeam}</Text>
                   <Flag code={match.awayFlag} style={{ width: 32, height: 32, margin: '10px' }} />
                 </View>
               </View>
