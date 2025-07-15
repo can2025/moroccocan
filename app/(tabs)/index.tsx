@@ -61,7 +61,7 @@ export default function HomeScreen() {
           style={{ width: 25, height: 50 }}
           resizeMode="contain"
       />
-      <View style={styles.texts}>
+      <View style={styles.box2}>
         <Text style={styles.title}>CAN 2025 Morocco</Text>
         <Text style={styles.subtitle}>Africa Cup of Nations</Text>
       </View>
