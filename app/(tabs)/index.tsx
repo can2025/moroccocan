@@ -56,11 +56,13 @@ export default function HomeScreen() {
   style={styles.header}>
   <View style={styles.headerContent}>
     <View style={styles.textContainer}>
+      <View style={styles.box1}>
       <Image
           source={require('../../assets/images/afcon2025.png')}
           style={{ width: 25, height: 50 }}
           resizeMode="contain"
       />
+        </View>
       <View style={styles.box2}>
         <Text style={styles.title}>CAN 2025 Morocco</Text>
         <Text style={styles.subtitle}>Africa Cup of Nations</Text>
