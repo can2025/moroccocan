@@ -12,7 +12,7 @@ const upcomingMatches = [
     homeTeam: 'Morocco',
     awayTeam: 'Comoros',
     homeFlag: 'ma',
-    awayFlag: '🇰🇲',
+    awayFlag: 'km',
     date: 'Today',
     time: '20:00',
     venue: 'Prince Moulay Abdellah Stadium',
