@@ -3,6 +3,7 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'rea
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Play, MapPin, Trophy, Clock } from 'lucide-react-native';
+import FlagIcon from '@/components/FlagIcon';
 import Flag from 'react-world-flags';
 
 const upcomingMatches = [
@@ -85,7 +86,7 @@ export default function HomeScreen() {
               
               <View style={styles.matchInfo}>
                 <View style={styles.teamContainer}>
-                  <Flag code="ma" style={{ width: 32, height: 32 }} />
+                  <Flag code="ma" style={{ width: 32, height: 32, margin: '10px' }} />
                   <Text style={styles.teamName}>{match.homeTeam}</Text>
                   <Text style={styles.score}>{match.homeScore}</Text>
                 </View>
