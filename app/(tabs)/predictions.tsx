@@ -53,8 +53,6 @@ const upcomingMatches = [
     time: '20:30',
     venue: 'Marrakesh Stadium',
     city: 'Marrakech',
-    group: 'Group B',
-    status: 'upcoming',
   },
   {
     id: 5,
