@@ -57,6 +57,19 @@ const matches = [
     group: 'Group B',
     status: 'upcoming',
   },
+  {
+    id: 4,
+    homeTeam: 'South Africa',
+    awayTeam: 'Angola',
+    homeFlag: '🇿🇦',
+    awayFlag: '🇦🇴',
+    date: 'Dec 22',
+    time: '20:30',
+    venue: 'Marrakesh Stadium',
+    city: 'Marrakech',
+    group: 'Group B',
+    status: 'upcoming',
+  },
 ];
 
 const filters = {
