@@ -53,21 +53,20 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.container}>
      <LinearGradient
   colors={['#2b0d0d', '#190504']}
-  style={styles.header}
-
+  style={styles.header}>
   <View style={styles.headerContent}>
-  <View style={styles.textContainer}>
-    <View style={styles.texts}>
-      <Text style={styles.title}>CAN 2025 Morocco</Text>
-      <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+    <View style={styles.textContainer}>
+      <Image
+          source={require('../../assets/images/afcon2025.png')}
+          style={{ width: 25, height: 50 }}
+          resizeMode="contain"
+      />
+      <View style={styles.texts}>
+        <Text style={styles.title}>CAN 2025 Morocco</Text>
+        <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+      </View>
     </View>
-    <Image
-      source={require('../../assets/images/afcon2025.png')}
-      style={{ width: 100, height: 80 }}
-      resizeMode="contain"
-    />
   </View>
-</View>
 </LinearGradient> 
       {/*
       <LinearGradient
