@@ -58,9 +58,9 @@ export default function HomeScreen() {
   <View style={styles.headerContent}>
     <View style={styles.textContainer}>
       <Image
-        source={require('assets/images/afcon2025_logo.webp')} // Replace with your actual image path
-        style={styles.logo}
-        resizeMode="contain"
+          source={require('../../assets/images/afcon2025.png')}
+          style={styles.logo}
+          resizeMode="contain"
       />
       <View style={styles.texts}>
         <Text style={styles.title}>CAN 2025 Morocco</Text>
