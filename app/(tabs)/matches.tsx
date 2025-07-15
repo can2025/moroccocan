@@ -59,8 +59,8 @@ const matches = [
   },
   {
     id: 4,
-    homeTeam: 'South Africa',
-    awayTeam: 'Angola',
+    homeTeam: 'Nigeria',
+    awayTeam: 'Tanzania',
     homeFlag: '🇿🇦',
     awayFlag: '🇦🇴',
     date: 'Dec 22',
