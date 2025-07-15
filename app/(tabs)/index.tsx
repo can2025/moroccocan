@@ -39,7 +39,7 @@ const liveMatches = [
     homeTeam: 'Nigeria',
     awayTeam: 'Tunisia',
     homeFlag: 'ng',
-    awayFlag: '🇹🇳',
+    awayFlag: 'tn',
     homeScore: 2,
     awayScore: 1,
     minute: '78\'',
