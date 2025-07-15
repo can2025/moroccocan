@@ -109,6 +109,19 @@ const matches = [
     group: 'Group D',
     status: 'upcoming',
   },
+  {
+    id: 9,
+    homeTeam: 'DR Congo',
+    awayTeam: 'Benin',
+    homeFlag: 'CD',
+    awayFlag: 'BJ',
+    date: 'Dec 23',
+    time: '20:30',
+    venue: 'Al Barid Stadium',
+    city: 'Rabat',
+    group: 'Group D',
+    status: 'upcoming',
+  },
 ];
 
 const filters = {
