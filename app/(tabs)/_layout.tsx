@@ -1,4 +1,5 @@
 import { Tabs } from 'expo-router';
+import Entypo from '@expo/vector-icons/Entypo';
 import { Chrome as Home, Calendar, Users, MapPin, Target } from 'lucide-react-native';
 
 export default function TabLayout() {
