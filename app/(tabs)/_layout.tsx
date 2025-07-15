@@ -25,7 +25,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
-            <Home size={size} color={color} />
+            <Entypo size={size} color={color} />
           ),
         }}
       />
