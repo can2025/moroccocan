@@ -96,6 +96,19 @@ const matches = [
     group: 'Group D',
     status: 'upcoming',
   },
+  {
+    id: 8,
+    homeTeam: 'Senegal',
+    awayTeam: 'Botswana',
+    homeFlag: 'SN',
+    awayFlag: 'BW',
+    date: 'Dec 23',
+    time: '18:00',
+    venue: 'Ibn Batouta Stadium',
+    city: 'Tangier',
+    group: 'Group D',
+    status: 'upcoming',
+  },
 ];
 
 const filters = {
