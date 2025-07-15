@@ -174,7 +174,6 @@ export default function GroupsScreen() {
                   <View key={team.name} style={styles.tableRow}>
                     <View style={styles.teamCell}>
                       <Text style={styles.position}>{index + 1}</Text>
-                      <FlagIcon country={team.name} size={24} />
                       <Flag code={team.flag} style={{ width: 32, height: 32, margin: '10px' }} />
                       <Text style={styles.teamName}>{team.name}</Text>
                     </View>
