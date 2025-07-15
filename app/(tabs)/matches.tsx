@@ -38,7 +38,7 @@ const matches = [
     homeFlag: '🇪🇬',
     awayFlag: '🇿🇼',
     date: 'Dec 22',
-    time: '20:00',
+    time: '18:00',
     venue: 'Adrar Stadium',
     city: 'Agadir',
     group: 'Group B',
