@@ -12,7 +12,7 @@ const cities = [
     stadium: 'Marrakesh Stadium',
     capacity: '41,245',
     images: [
-      'https://images.pexels.com/photos/3889855/pexels-photo-3889855.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://www.marrakech-cityguide.com/wp-content/uploads/Marrakech-place-koutoubia-e1609154215571.jpg?auto=compress&cs=tinysrgb&w=800',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Stade_de_marrakech.jpg/960px-Stade_de_marrakech.jpg?auto=compress&cs=tinysrgb&w=800',
     ],
   },
