@@ -27,6 +27,7 @@ export default function TabLayout() {
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
             <Entypo size={size} color={color} />
+            <Entypo name="home" size={size} color={color} />
           ),
         }}
       />
