@@ -9,8 +9,8 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: '#2b0d0d',
           borderTopColor: '#3e1415',
-          height: 100,
-          paddingBottom: 10,
+          height: 70,
+          paddingBottom: 20,
           paddingTop: 10,
         },
         tabBarActiveTintColor: '#E53E3E',
