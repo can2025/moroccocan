@@ -12,7 +12,7 @@ const upcomingMatches = [
     awayFlag: 'KM',
     date: 'Dec 21',
     time: '20:00 GMT',
-    venue: 'Stade de Marrakech',
+    venue: 'Moulay Abdellah Stadium',
     city: 'Marrakech',
   },
   {
