@@ -40,8 +40,6 @@ const upcomingMatches = [
     time: '18:00',
     venue: 'Adrar Stadium',
     city: 'Agadir',
-    group: 'Group B',
-    status: 'upcoming',
   },
   {
     id: 4,
