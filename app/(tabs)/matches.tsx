@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronDown, MapPin, ExternalLink } from 'lucide-react-native';
-import FlagIcon from '@/components/FlagIcon';
 import Flag from 'react-world-flags';
 
 const matches = [
