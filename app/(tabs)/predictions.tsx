@@ -7,7 +7,7 @@ const upcomingMatches = [
   {
     id: 1,
     homeTeam: 'Morocco',
-    awayTeam: 'South Africa',
+    awayTeam: 'Comoros',
     homeFlag: '🇲🇦',
     awayFlag: '🇿🇦',
     date: 'Today',
