@@ -103,7 +103,7 @@ const matches = [
     homeFlag: 'CD',
     awayFlag: 'BJ',
     date: 'Dec 23',
-    time: '18:00',
+    time: '20:30',
     venue: 'Al Barid Stadium',
     city: 'Rabat',
     group: 'Group D',
