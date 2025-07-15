@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import FlagIcon from '@/components/FlagIcon';
 import Flag from 'react-world-flags';
 
 const upcomingMatches = [
