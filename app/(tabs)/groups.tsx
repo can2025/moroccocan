@@ -195,9 +195,9 @@ export default function GroupsScreen() {
               <View style={styles.tableHeader}>
                 <Text style={[styles.headerCell, styles.teamHeader]}>Team</Text>
                 <Text style={styles.headerCell}>MP</Text>
-                <Text style={styles.headerCell}>Pts</Text>
                 <Text style={styles.headerCell}>GF</Text>
                 <Text style={styles.headerCell}>GA</Text>
+                <Text style={styles.headerCell}>Pts</Text>
               </View>
               
               {/* Table Rows */}
