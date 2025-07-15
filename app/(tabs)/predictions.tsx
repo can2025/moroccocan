@@ -213,7 +213,6 @@ export default function PredictionsScreen() {
                   
                   <View style={styles.teamContainer}>
                     <Text style={styles.teamName}>{match.awayTeam}</Text>
-                    <FlagIcon country={match.awayTeam} size={32} />
                     <Flag code={match.awayFlag} style={{ width: 32, height: 32, margin: '10px' }} />
                   </View>
                 </View>
