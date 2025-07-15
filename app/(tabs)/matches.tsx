@@ -67,7 +67,7 @@ const matches = [
     time: '13:00',
     venue: 'Fes Stadium',
     city: 'Fes',
-    group: 'Group B',
+    group: 'Group C',
     status: 'upcoming',
   },
 ];
