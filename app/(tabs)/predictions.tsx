@@ -79,8 +79,6 @@ const upcomingMatches = [
     time: '15:30',
     venue: 'Moulay Abdellah Sports Complex',
     city: 'Rabat',
-    group: 'Group C',
-    status: 'upcoming',
   },
   {
     id: 7,
