@@ -83,6 +83,19 @@ const matches = [
     group: 'Group C',
     status: 'upcoming',
   },
+  {
+    id: 6,
+    homeTeam: 'Tunisia',
+    awayTeam: 'Uganda',
+    homeFlag: 'TN',
+    awayFlag: 'UG',
+    date: 'Dec 23',
+    time: '15:30',
+    venue: 'Moulay Abdellah Sports Complex',
+    city: 'Rabat',
+    group: 'Group C',
+    status: 'upcoming',
+  },
 ];
 
 const filters = {
