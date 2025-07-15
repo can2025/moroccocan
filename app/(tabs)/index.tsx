@@ -51,13 +51,22 @@ const liveMatches = [
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient
-        colors={['#2b0d0d', '#190504']}
-        style={styles.header}
-      >
-        <Text style={styles.title}>CAN 2025 Morocco</Text>
-        <Text style={styles.subtitle}>Africa Cup of Nations</Text>
-      </LinearGradient>
+     <LinearGradient
+  colors={['#2b0d0d', '#190504']}
+  style={styles.header}
+>
+  <View style={styles.headerContent}>
+    <View style={styles.textContainer}>
+      <Text style={styles.title}>CAN 2025 Morocco</Text>
+      <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+    </View>
+    <Image
+      source={{ uri: 'https://www.cafonline.com/media/sa4cpure/afcon2025_logo_land_color-v1.png' }}
+      style={styles.logo}
+      resizeMode="contain"
+    />
+  </View>
+</LinearGradient>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Live Matches */}
