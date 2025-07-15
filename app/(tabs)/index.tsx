@@ -59,7 +59,7 @@ export default function HomeScreen() {
     <View style={styles.textContainer}>
       <Image
           source={require('../../assets/images/afcon2025.png')}
-          style={{ width: 25, height: 50 }}
+          style={{ width: 100, height: 200 }}
           resizeMode="contain"
       />
       <View style={styles.texts}>
