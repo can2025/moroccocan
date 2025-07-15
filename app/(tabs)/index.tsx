@@ -117,7 +117,7 @@ export default function HomeScreen() {
             <TouchableOpacity key={match.id} style={styles.matchCard}>
               <View style={styles.matchInfo}>
                 <View style={styles.teamContainer}>
-                  <Flag code={match.homeTeam} style={{ width: 32, height: 32, margin: '10px' }} />
+                  <Flag code={match.homeFlag} style={{ width: 32, height: 32, margin: '10px' }} />
                   <Text style={styles.teamName}>{match.homeTeam}</Text>
                 </View>
                 
@@ -129,7 +129,7 @@ export default function HomeScreen() {
                 
                 <View style={styles.teamContainer}>
                   <Text style={styles.teamName}>{match.awayTeam}</Text>
-                  <FlagIcon country={match.awayTeam} size={32} />
+                  <Flag code={match.awayFlag} style={{ width: 32, height: 32, margin: '10px' }} />
                 </View>
               </View>
               
