@@ -201,7 +201,7 @@ export default function PredictionsScreen() {
                     <Text style={styles.vs}>-</Text>
                     <TextInput
                       style={styles.scoreInput}
-                      placeholder="U"
+                      placeholder="0"
                       placeholderTextColor="#9CA3AF"
                       value={predictions[match.id]?.awayScore || ''}
                       onChangeText={(value) => handlePredictionChange(match.id, 'awayScore', value)}
