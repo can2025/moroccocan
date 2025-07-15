@@ -63,7 +63,7 @@ export default function HomeScreen() {
     <Image
       source={{ uri: 'https://www.cafonline.com/media/sa4cpure/afcon2025_logo_land_color-v1.png' }}
       style={styles.logo}
-      resizeMode="contain"
+      
     />
   </View>
 </LinearGradient>
