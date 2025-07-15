@@ -7,7 +7,7 @@ const cities = [
     id: 1,
     name: 'Marrakech',
     isActive: true,
-    heritage: 'Marrakech is a major city in the Kingdom of Morocco. It is the fourth largest city in the country, after Casablanca, Fez and Tangier. It is the capital city of the mid-southwestern region of Marrakesh-Safi. Located to the north of the foothills of the snow-capped Atlas Mountains, Marrakesh is an important cultural, religious and trading centre for the Maghreb and sub-Saharan Africa.',
+    heritage: 'Marrakech – The Red City Awaits You! Step into the vibrant heart of Morocco in Marrakech, a city where ancient traditions and modern energy collide. From the bustling souks of the Medina to the majestic Koutoubia Mosque and the lively Jemaa el-Fnaa square, Marrakech offers an unforgettable cultural experience. AFCON fans can enjoy not only the excitement of football but also the warm hospitality, rich flavors, and iconic red architecture that make this city truly unique. Discover world-class cuisine, breathtaking gardens, and centuries-old palaces – all under the glowing Moroccan sun. Marrakech is more than a destination – it’s a celebration of life.',
     football: 'Marrakech has a rich football history with the Stade de Marrakech being one of Morocco\'s premier football venues. The city\'s local club, Kawkab Marrakech, has contributed significantly to Moroccan football, winning national championships and showcasing Morocco\'s passion for the beautiful game.',
     stadium: 'Marrakesh Stadium',
     capacity: '41,245',
