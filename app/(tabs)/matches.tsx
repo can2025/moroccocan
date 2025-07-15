@@ -25,7 +25,7 @@ const matches = [
     homeFlag: '🇲🇱',
     awayFlag: '🇿🇲',
     date: 'Dec 22',
-    time: '18:00',
+    time: '15:30',
     venue: 'Mohammed V Stadium',
     city: 'Casablanca',
     group: 'Group A',
