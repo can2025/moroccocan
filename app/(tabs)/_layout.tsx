@@ -37,6 +37,7 @@ export default function TabLayout() {
           title: 'Matches',
           tabBarIcon: ({ size, color }) => (
             <Calendar size={size} color={color} />
+            <Ionicons name="calendar-number-outline" size={size} color="white" />
           ),
         }}
       />
