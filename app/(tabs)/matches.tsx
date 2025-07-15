@@ -70,6 +70,19 @@ const matches = [
     group: 'Group C',
     status: 'upcoming',
   },
+  {
+    id: 6,
+    homeTeam: 'Nigeria',
+    awayTeam: 'Tanzania',
+    homeFlag: 'NG',
+    awayFlag: 'TZ',
+    date: 'Dec 23',
+    time: '13:00',
+    venue: 'Fes Stadium',
+    city: 'Fes',
+    group: 'Group C',
+    status: 'upcoming',
+  },
 ];
 
 const filters = {
