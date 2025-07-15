@@ -50,7 +50,7 @@ const matches = [
     homeTeam: 'South Africa',
     awayTeam: 'Angola',
     homeFlag: 'za',
-    awayFlag: 'ago',
+    awayFlag: 'ag',
     date: 'Dec 22',
     time: '20:30',
     venue: 'Marrakesh Stadium',
