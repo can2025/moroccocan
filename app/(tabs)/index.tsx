@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Play, MapPin, Trophy, Clock } from 'lucide-react-native';
 import FlagIcon from '@/components/FlagIcon';
 import Flag from 'react-world-flags';
+import 'flag-icon-css/css/flag-icon.min.css';
 
 const upcomingMatches = [
   {
