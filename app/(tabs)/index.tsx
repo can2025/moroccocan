@@ -56,7 +56,7 @@ export default function HomeScreen() {
   style={styles.header}
 >
   <View style={styles.headerContent, }>
-  <View style="display: flex;">
+  <View style={{flexDirection: 'row'}}>
     <View style={styles.texts}>
       <Image
       source={require('../../assets/images/afcon2025.png')}
