@@ -50,27 +50,7 @@ const liveMatches = [
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-     <LinearGradient
-  colors={['#2b0d0d', '#190504']}
-  style={styles.header}>
-  <View style={styles.headerContent}>
-    <View style={styles.textContainer}>
-      <View style={styles.box1}>
-      <Image
-          source={require('../../assets/images/afcon2025.png')}
-          style={{ width: 25, height: 50 }}
-          resizeMode="contain"
-      />
-        </View>
-      <View style={styles.box2}>
-        <Text style={styles.title}>CAN 2025 Morocco</Text>
-        <Text style={styles.subtitle}>Africa Cup of Nations</Text>
-      </View>
-    </View>
-  </View>
-</LinearGradient> 
-      {/*
+    <SafeAreaView style={styles.container}>     
       <LinearGradient
   colors={['#2b0d0d', '#190504']}
   style={styles.header}
@@ -79,6 +59,24 @@ export default function HomeScreen() {
     <View style={styles.textContainer}>
       <Text style={styles.title}>CAN 2025 Morocco</Text>
       <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+    </View>
+  </View>
+</LinearGradient>
+      {/*
+      <LinearGradient
+  colors={['#2b0d0d', '#190504']}
+  style={styles.header}>
+  <View style={styles.headerContent}>
+    <View style={styles.textContainer}>
+      <Image
+          source={require('../../assets/images/afcon2025.png')}
+          style={{ width: 25, height: 50 }}
+          resizeMode="contain"
+      />
+      <View style={styles.texts}>
+        <Text style={styles.title}>CAN 2025 Morocco</Text>
+        <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+      </View>
     </View>
   </View>
 </LinearGradient>
@@ -192,19 +190,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row', // aligns children side by side
-  },
-  box1: {
-    flex: 1,
-    backgroundColor: 'lightblue',
-    padding: 20,
-  },
-  box2: {
-    flex: 1,
-    backgroundColor: 'lightcoral',
-    padding: 20,
-  },
   container: {
     flex: 1,
     backgroundColor: '#190504',
