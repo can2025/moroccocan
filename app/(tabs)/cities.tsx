@@ -36,7 +36,7 @@ const cities = [
     heritage: 'Tangier is a major city in northwestern Morocco. It is located on the Maghreb coast at the western entrance to the Strait of Gibraltar, where the Mediterranean Sea meets the Atlantic Ocean off Cape Spartel. The city is the capital of the Tanger-Tetouan-Al Hoceima region.',
     football: 'Tangier\'s football scene is vibrant with the impressive Ibn Batouta Stadium serving as a modern venue for international matches. The city has produced talented players and maintains strong football traditions.',
     stadium: 'Ibn Batouta Stadium',
-    capacity: '75,600',
+    capacity: '80,000',
     images: [
       'https://images.pexels.com/photos/10813896/pexels-photo-10813896.jpeg?auto=compress&cs=tinysrgb&w=800',
       'https://images.pexels.com/photos/4930014/pexels-photo-4930014.jpeg?auto=compress&cs=tinysrgb&w=800',

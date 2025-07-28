@@ -175,7 +175,7 @@ export default function HomeScreen() {
               <Text style={styles.statLabel}>Groups</Text>
             </View>
             <View style={styles.statCard}>
-              <Text style={styles.statNumber}>9</Text>
+              <Text style={styles.statNumber}>6</Text>
               <Text style={styles.statLabel}>Cities</Text>
             </View>
             <View style={styles.statCard}>
