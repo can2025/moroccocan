@@ -1,82 +1,34 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Flag from 'react-world-flags';
-
-const groupsData = {
-  'All': [
-    // Group A
-    { name: 'Morocco', flag: 'ma', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'A' },
-    { name: 'Mali', flag: 'ml', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'A' },
-    { name: 'Zambia', flag: 'zm', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'A' },
-    { name: 'Comoros', flag: 'km', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'A' },
-    // Group B
-    { name: 'Egypt', flag: 'eg', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'B' },
-    { name: 'South Africa', flag: 'za', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'B' },
-    { name: 'Angola', flag: 'ao', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'B' },
-    { name: 'Zimbabwe', flag: 'zw', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'B' },
-    // Group C
-    { name: 'Nigeria', flag: 'ng', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'C' },
-    { name: 'Tunisia', flag: 'tn', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'C' },
-    { name: 'Uganda', flag: 'ug', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'C' },
-    { name: 'Tanzania', flag: 'tz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'C' },
-    // Group D
-    { name: 'Senegal', flag: 'sn', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'D' },
-    { name: 'DR Congo', flag: 'cd', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'D' },
-    { name: 'Benin', flag: 'bj', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'D' },
-    { name: 'Botswana', flag: 'bw', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'D' },
-    // Group E
-    { name: 'Algeria', flag: 'dz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'E' },
-    { name: 'Burkina Faso', flag: 'bf', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'E' },
-    { name: 'Equatorial Guinea', flag: 'gq', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'E' },
-    { name: 'Sudan', flag: 'sd', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'E' },
-    // Group F
-    { name: 'Ivory Coast', flag: 'ci', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'F' },
-    { name: 'Cameroon', flag: 'cm', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'F' },
-    { name: 'Gabon', flag: 'ga', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'F' },
-    { name: 'Mozambique', flag: 'mz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0, group: 'F' },
-  ],
-  'Group A': [
-    { name: 'Morocco', flag: 'ma', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Mali', flag: 'ml', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Zambia', flag: 'zm', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Comoros', flag: 'km', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-  ],
-  'Group B': [
-    { name: 'Egypt', flag: 'eg', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'South Africa', flag: 'za', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Angola', flag: 'ao', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Zimbabwe', flag: 'zw', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-  ],
-  'Group C': [
-    { name: 'Nigeria', flag: 'ng', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Tunisia', flag: 'tn', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Uganda', flag: 'ug', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Tanzania', flag: 'tz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-  ],
-  'Group D': [
-    { name: 'Senegal', flag: 'sn', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'DR Congo', flag: 'cd', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Benin', flag: 'bj', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Botswana', flag: 'bw', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-  ],
-  'Group E': [
-    { name: 'Algeria', flag: 'dz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Burkina Faso', flag: 'bf', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Equatorial Guinea', flag: 'gq', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Sudan', flag: 'sd', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-  ],
-  'Group F': [
-    { name: 'Ivory Coast', flag: 'ci', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Cameroon', flag: 'cm', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Gabon', flag: 'ga', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-    { name: 'Mozambique', flag: 'mz', mp: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 },
-  ],
-};
+import CountryFlag from "react-native-country-flag";
 
 export default function GroupsScreen() {
+  const [groupsData, setGroupsData] = useState<{ [key: string]: any[] }>({});
   const [selectedGroup, setSelectedGroup] = useState('All');
   const [selectedView, setSelectedView] = useState('Groups');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/groups');
+        const data = await res.json();
+        // Transform flat array into grouped object
+        const grouped: { [key: string]: any[] } = {};
+        data.forEach((team: any) => {
+          if (!grouped[team.group]) grouped[team.group] = [];
+          grouped[team.group].push(team);
+        });
+        setGroupsData(grouped);
+      } catch (error) {
+        console.error('Failed to fetch groups:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchGroups();
+  }, []);
 
   const groups = Object.keys(groupsData);
 
@@ -116,7 +68,22 @@ export default function GroupsScreen() {
       {/* Group Selector */}
       <View style={styles.groupSelector}>
         <View style={styles.groupRow}>
-          {groups.slice(0, 4).map((group) => (
+          {/* Add "All" button */}
+          <TouchableOpacity
+            key="All"
+            style={[
+              styles.groupButton,
+              selectedGroup === 'All' && styles.activeGroupButton
+            ]}
+            onPress={() => setSelectedGroup('All')}
+          >
+            <Text style={[
+              styles.groupButtonText,
+              selectedGroup === 'All' && styles.activeGroupButtonText
+            ]}>All</Text>
+          </TouchableOpacity>
+          {/* Render first 3 groups */}
+          {groups.slice(0, 3).map((group) => (
             <TouchableOpacity
               key={group}
               style={[
@@ -133,7 +100,8 @@ export default function GroupsScreen() {
           ))}
         </View>
         <View style={styles.groupRow}>
-          {groups.slice(4).map((group) => (
+          {/* Render remaining groups */}
+          {groups.slice(3).map((group) => (
             <TouchableOpacity
               key={group}
               style={[
@@ -152,7 +120,9 @@ export default function GroupsScreen() {
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {selectedGroup === 'All' ? (
+        {loading ? (
+          <ActivityIndicator color="#E53E3E" size="large" style={{ marginTop: 40 }} />
+        ) : selectedGroup === 'All' ? (
           // Show all groups
           Object.keys(groupsData).filter(key => key !== 'All').map((groupKey) => (
             <View key={groupKey} style={styles.section}>
@@ -169,11 +139,11 @@ export default function GroupsScreen() {
                 </View>
                 
                 {/* Table Rows */}
-                {groupsData[groupKey].map((team, index) => (
+                {groupsData[groupKey]?.map((team, index) => (
                   <View key={team.name} style={styles.tableRow}>
                     <View style={styles.teamCell}>
                       <Text style={styles.position}>{index + 1}</Text>
-                      <Flag code={team.flag} style={{ width: 32, height: 32, margin: '10px' }} />
+                      <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
                       <Text style={styles.teamName}>{team.name}</Text>
                     </View>
                     <Text style={styles.cell}>{team.mp}</Text>
@@ -201,11 +171,11 @@ export default function GroupsScreen() {
               </View>
               
               {/* Table Rows */}
-              {groupsData[selectedGroup].map((team, index) => (
+              {groupsData[selectedGroup]?.map((team, index) => (
                 <View key={team.name} style={styles.tableRow}>
                   <View style={styles.teamCell}>
                     <Text style={styles.position}>{index + 1}</Text>
-                    <Flag code={team.flag} style={{ width: 32, height: 32, margin: '10px' }} />
+                    <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
                     <Text style={styles.teamName}>{team.name}</Text>
                   </View>
                   <Text style={styles.cell}>{team.mp}</Text>
@@ -356,6 +326,9 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     width: 40,
+  },
+  flag: {
+    marginHorizontal: 8, // fallback for older React Native versions
   },
   pointsCell: {
     fontWeight: 'bold',

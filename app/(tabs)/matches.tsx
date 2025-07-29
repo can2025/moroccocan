@@ -1,167 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronDown, MapPin, ExternalLink } from 'lucide-react-native';
-import Flag from 'react-world-flags';
-
-const matches = [
-  {
-    id: 1,
-    homeTeam: 'Morocco',
-    awayTeam: 'Comoros',
-    homeFlag: 'ma',
-    awayFlag: 'km',
-    date: 'Dec 21',
-    time: '20:00',
-    venue: 'Prince Moulay Abdellah Stadium',
-    city: 'Rabat',
-    group: 'Group A',
-    status: 'upcoming',
-  },
-  {
-    id: 2,
-    homeTeam: 'Mali',
-    awayTeam: 'Zambia',
-    homeFlag: 'ml',
-    awayFlag: 'zm',
-    date: 'Dec 22',
-    time: '15:30',
-    venue: 'Mohammed V Stadium',
-    city: 'Casablanca',
-    group: 'Group A',
-    status: 'upcoming',
-  },
-  {
-    id: 3,
-    homeTeam: 'Egypt',
-    awayTeam: 'Zimbabwe',
-    homeFlag: 'eg',
-    awayFlag: 'zw',
-    date: 'Dec 22',
-    time: '18:00',
-    venue: 'Adrar Stadium',
-    city: 'Agadir',
-    group: 'Group B',
-    status: 'upcoming',
-  },
-  {
-    id: 4,
-    homeTeam: 'South Africa',
-    awayTeam: 'Angola',
-    homeFlag: 'za',
-    awayFlag: 'ag',
-    date: 'Dec 22',
-    time: '20:30',
-    venue: 'Marrakesh Stadium',
-    city: 'Marrakech',
-    group: 'Group B',
-    status: 'upcoming',
-  },
-  {
-    id: 5,
-    homeTeam: 'Nigeria',
-    awayTeam: 'Tanzania',
-    homeFlag: 'NG',
-    awayFlag: 'TZ',
-    date: 'Dec 23',
-    time: '13:00',
-    venue: 'Fes Stadium',
-    city: 'Fes',
-    group: 'Group C',
-    status: 'upcoming',
-  },
-  {
-    id: 6,
-    homeTeam: 'Tunisia',
-    awayTeam: 'Uganda',
-    homeFlag: 'TN',
-    awayFlag: 'UG',
-    date: 'Dec 23',
-    time: '15:30',
-    venue: 'Moulay Abdellah Sports Complex',
-    city: 'Rabat',
-    group: 'Group C',
-    status: 'upcoming',
-  },
-  {
-    id: 7,
-    homeTeam: 'Senegal',
-    awayTeam: 'Botswana',
-    homeFlag: 'SN',
-    awayFlag: 'BW',
-    date: 'Dec 23',
-    time: '18:00',
-    venue: 'Ibn Batouta Stadium',
-    city: 'Tangier',
-    group: 'Group D',
-    status: 'upcoming',
-  },
-  {
-    id: 8,
-    homeTeam: 'DR Congo',
-    awayTeam: 'Benin',
-    homeFlag: 'CD',
-    awayFlag: 'BJ',
-    date: 'Dec 23',
-    time: '20:30',
-    venue: 'Al Barid Stadium',
-    city: 'Rabat',
-    group: 'Group D',
-    status: 'upcoming',
-  },
-  {
-    id: 9,
-    homeTeam: 'Algeria',
-    awayTeam: 'Sudan',
-    homeFlag: 'dz',
-    awayFlag: 'sd',
-    date: 'Dec 24',
-    time: '13:00',
-    venue: 'Prince Moulay Al Hassan Stadium',
-    city: 'Rabat',
-    group: 'Group E',
-    status: 'upcoming',
-  },
-  {
-    id: 10,
-    homeTeam: 'Burkina Faso',
-    awayTeam: 'Equatorial Guinea',
-    homeFlag: 'bf',
-    awayFlag: 'gq',
-    date: 'Dec 24',
-    time: '15:30',
-    venue: 'Mohamed V Stadium',
-    city: 'Casablanca',
-    group: 'Group E',
-    status: 'upcoming',
-  },
-  {
-    id: 11,
-    homeTeam: 'Ivory Coast',
-    awayTeam: 'Mozambique',
-    homeFlag: 'ci',
-    awayFlag: 'mz',
-    date: 'Dec 24',
-    time: '18:00',
-    venue: 'Marrakech Stadium',
-    city: 'Marrakech',
-    group: 'Group F',
-    status: 'upcoming',
-  },
-  {
-    id: 12,
-    homeTeam: 'Cameroun',
-    awayTeam: 'Gabon',
-    homeFlag: 'cm',
-    awayFlag: 'ga',
-    date: 'Dec 24',
-    time: '18:30',
-    venue: 'Adrar Stadium',
-    city: 'Agadir',
-    group: 'Group F',
-    status: 'upcoming',
-  },
-];
+import CountryFlag from "react-native-country-flag";
+import { Picker } from '@react-native-picker/picker';
 
 const filters = {
   groups: ['All Groups', 'Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'Group F'],
@@ -170,9 +12,31 @@ const filters = {
 };
 
 export default function MatchesScreen() {
+  const [matches, setMatches] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedGroup, setSelectedGroup] = useState('All Groups');
   const [selectedDate, setSelectedDate] = useState('All Dates');
   const [selectedCity, setSelectedCity] = useState('All Cities');
+
+  useEffect(() => {
+    const fetchMatches = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/matches');
+        const data = await res.json();
+        setMatches(data);
+      } catch (error) {
+        console.error('Failed to fetch matches:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMatches();
+  }, []);
+
+  // Dynamically compute filter options
+  const groupOptions = ['All Groups', ...Array.from(new Set(matches.map(m => m.group)))];
+  const dateOptions = ['All Dates', ...Array.from(new Set(matches.map(m => m.date)))];
+  const cityOptions = ['All Cities', ...Array.from(new Set(matches.map(m => m.city)))];
 
   const filteredMatches = matches.filter(match => {
     return (
@@ -185,64 +49,77 @@ export default function MatchesScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Match Calendar</Text>
-      
       {/* Filters */}
       <View style={styles.filtersContainer}>
         <View style={styles.filterRow}>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterText}>{selectedGroup}</Text>
-            <ChevronDown size={16} color="#9CA3AF" />
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterText}>{selectedDate}</Text>
-            <ChevronDown size={16} color="#9CA3AF" />
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterText}>{selectedCity}</Text>
-            <ChevronDown size={16} color="#9CA3AF" />
-          </TouchableOpacity>
+          {/* Group Filter */}
+          <Picker
+            selectedValue={selectedGroup}
+            style={styles.filterPicker}
+            onValueChange={(itemValue) => setSelectedGroup(itemValue)}
+          >
+            {groupOptions.map((group) => (
+              <Picker.Item key={group} label={group} value={group} />
+            ))}
+          </Picker>
+          {/* Date Filter */}
+          <Picker
+            selectedValue={selectedDate}
+            style={styles.filterPicker}
+            onValueChange={(itemValue) => setSelectedDate(itemValue)}
+          >
+            {dateOptions.map((date) => (
+              <Picker.Item key={date} label={date} value={date} />
+            ))}
+          </Picker>
+          {/* City Filter */}
+          <Picker
+            selectedValue={selectedCity}
+            style={styles.filterPicker}
+            onValueChange={(itemValue) => setSelectedCity(itemValue)}
+          >
+            {cityOptions.map((city) => (
+              <Picker.Item key={city} label={city} value={city} />
+            ))}
+          </Picker>
         </View>
       </View>
-
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Group Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Group A</Text>
-          
-          {filteredMatches.map((match) => (
-            <View key={match.id} style={styles.matchCard}>
-              <View style={styles.matchInfo}>
-                <View style={styles.teamContainer}>
-                  <Flag code={match.homeFlag} style={{ width: 32, height: 32, margin: '10px' }} />
-                  <Text style={styles.teamName}>{match.homeTeam}</Text>
+          {loading ? (
+            <ActivityIndicator color="#E53E3E" size="large" style={{ marginTop: 40 }} />
+          ) : filteredMatches.length === 0 ? (
+            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>No matches found.</Text>
+          ) : (
+            filteredMatches.map((match) => (
+              <View key={match._id || match.id} style={styles.matchCard}>
+                <View style={styles.matchInfo}>
+                  <View style={styles.teamContainer}>
+                    <CountryFlag isoCode={match.homeFlag} size={25} style={styles.flag} />
+                    <Text style={styles.teamName}>{match.homeTeam}</Text>
+                  </View>
+                  <View style={styles.matchCenter}>
+                    <Text style={styles.vs}>vs.</Text>
+                  </View>
+                  <View style={styles.teamContainer}>
+                    <Text style={styles.teamName}>{match.awayTeam}</Text>
+                    <CountryFlag isoCode={match.awayFlag} size={25} style={styles.flag} />
+                  </View>
                 </View>
-                
-                <View style={styles.matchCenter}>
-                  <Text style={styles.vs}>vs.</Text>
+                <View style={styles.matchDetails}>
+                  <Text style={styles.matchDate}>{match.date} | {match.time}</Text>
+                  <View style={styles.venueInfo}>
+                    <MapPin size={14} color="#9CA3AF" />
+                    <Text style={styles.venue}>{match.venue} | {match.city}</Text>
+                  </View>
                 </View>
-                
-                <View style={styles.teamContainer}>
-                  <Text style={styles.teamName}>{match.awayTeam}</Text>
-                   <Flag code={match.awayFlag} style={{ width: 32, height: 32, margin: '10px' }} />
-                </View>
+                <TouchableOpacity style={styles.buyTicketButton}>
+                  <Text style={styles.buyTicketText}>Buy Tickets</Text>
+                  <ExternalLink size={16} color="#FFFFFF" />
+                </TouchableOpacity>
               </View>
-              
-              <View style={styles.matchDetails}>
-                <Text style={styles.matchDate}>{match.date} | {match.time}</Text>
-                <View style={styles.venueInfo}>
-                  <MapPin size={14} color="#9CA3AF" />
-                  <Text style={styles.venue}>{match.venue} | {match.city}</Text>
-                </View>
-              </View>
-              
-              <TouchableOpacity style={styles.buyTicketButton}>
-                <Text style={styles.buyTicketText}>Buy Tickets</Text>
-                <ExternalLink size={16} color="#FFFFFF" />
-              </TouchableOpacity>
-            </View>
-          ))}
+            ))
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -269,23 +146,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  filterButton: {
+  filterPicker: {
+    flex: 1,
+    color: '#fff',
     backgroundColor: '#2b0d0d',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
     marginHorizontal: 4,
-    borderWidth: 1,
-    borderColor: '#3e1415',
-  },
-  filterText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontWeight: '600',
-    flex: 1,
   },
   content: {
     flex: 1,
@@ -318,6 +183,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
+    gap: 8, // Add gap for consistent spacing (React Native >=0.71)
+  },
+  flag: {
+    marginHorizontal: 8, // fallback for older React Native versions
   },
   teamName: {
     fontSize: 16,
