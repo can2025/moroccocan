@@ -5,6 +5,7 @@ import CountryFlag from "react-native-country-flag";
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
+import env from '../../env';
 
 
 export default function GroupsScreen() {
@@ -18,7 +19,7 @@ export default function GroupsScreen() {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/groups');
+        const res = await fetch(`${env.API_BASE_URL}/groups`);
         const data = await res.json();
         // Transform flat array into grouped object
         const grouped: { [key: string]: any[] } = {};

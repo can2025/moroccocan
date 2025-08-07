@@ -5,6 +5,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
+import env from '../../env'; 
 
 
 type NewsItem = {
@@ -34,7 +35,7 @@ export default function NewsScreen() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/news');
+        const res = await fetch(`${env.API_BASE_URL}/news`);
         const data = await res.json();
         setNews(data);
       } catch (error) {

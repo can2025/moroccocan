@@ -17,6 +17,14 @@
     "groups": "Groups",
     "cities": "Cities",
     "matches": "Matches"
+  },
+  "menu": {
+    "home": "Home",
+    "teams": "Teams",
+    "groups": "Groups",
+    "cities": "Cities",
+    "matches": "Matches",
+    "news": "Infos"
   }
   
 }

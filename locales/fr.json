@@ -19,4 +19,13 @@
     "cities": "Villes",
     "matches": "Matches"
   }
+  ,
+  "menu": {
+    "home": "Acceuil",
+    "teams": "Equipes",
+    "groups": "Groupes",
+    "cities": "Villes",
+    "matches": "Matches",
+    "news": "Infos"
+  }
 }

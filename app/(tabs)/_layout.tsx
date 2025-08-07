@@ -1,9 +1,15 @@
 import { Tabs } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Feather from '@expo/vector-icons/Feather';
+import i18n from '../../i18n';
+import { useTranslation } from 'react-i18next';
 import { Chrome as Home, Calendar, Users, MapPin, Target } from 'lucide-react-native';
 
 export default function TabLayout() {
+  const { t } = useTranslation();
+  const currentLang = i18n.language;
   return (
     <Tabs
       screenOptions={{
@@ -11,7 +17,7 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: '#2b0d0d',
           borderTopColor: '#3e1415',
-          height: 130,
+          height: 110,
           paddingBottom: 20,
           paddingTop: 10,
         },
@@ -25,7 +31,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: t('menu.home'),
           tabBarIcon: ({ size, color }) => (
             <FontAwesome name="home" size={size} color="white" />
           ),
@@ -34,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="matches"
         options={{
-          title: 'Matches',
+          title: t('menu.matches'),
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="calendar-number-outline" size={size} color="white" />
           ),
@@ -43,18 +49,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name="groups"
         options={{
-          title: 'Groups',
+          title: t('menu.groups'),
           tabBarIcon: ({ size, color }) => (
-            <Users size={size} color={color} />
+            <MaterialIcons name="groups" size={size} color="white" />
           ),
         }}
       />
       <Tabs.Screen
         name="cities"
         options={{
-          title: 'Cities',
+          title: t('menu.cities'),
           tabBarIcon: ({ size, color }) => (
-            <MapPin size={size} color={color} />
+            <Feather name="map-pin" size={size} color="white" />
           ),
         }}
       />
@@ -62,20 +68,13 @@ export default function TabLayout() {
       <Tabs.Screen
         name="news"
         options={{
-          title: 'News',
+          title: t('menu.news'),
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="trophy-outline" size={size} color="white" />
+            <FontAwesome name="newspaper-o" size={size} color="white" />
           ),
         }}
       />
-      <Tabs.Screen
-        name="newsDetails"
-        options={{
-          title: 'NewsDetails',
-          tabBarButton: () => null,
-          tabBarStyle: { display: 'none' },
-        }}
-      />
+
     </Tabs>
     
   );

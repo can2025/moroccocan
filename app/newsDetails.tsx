@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import { ArrowLeft, Bookmark } from 'lucide-react-native';
 import { router, useLocalSearchParams } from 'expo-router';
-import LanguageSelector from '../../components/LanguageSelector';
+import LanguageSelector from '../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n'; // Import the i18n instance directly
+import i18n from '../i18n'; // Import the i18n instance directly
 
 
 
@@ -25,16 +25,6 @@ export default function NewsDetailScreen() {
   const content = params[`content_${currentLang}`] || params.content_en || '';
   const title = params[`title_${currentLang}`] || params.title_en || '';
 
-
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  };
 
   return (
     <SafeAreaView style={styles.container}>

@@ -7,6 +7,7 @@ import CountryFlag from "react-native-country-flag"; // Use this for flags in Re
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
+import env from '../../env';
 
 export default function HomeScreen() {
   const [upcomingMatches, setUpcomingMatches] = useState<any[]>([]);
@@ -34,7 +35,7 @@ export default function HomeScreen() {
   useEffect(() => {
     const fetchUpcoming = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/matches/upcoming');
+        const res = await fetch(`${env.API_BASE_URL}/matches/upcoming`);
         const data = await res.json();
         setUpcomingMatches(data);
       } catch (error) {

@@ -7,6 +7,7 @@ import { Picker } from '@react-native-picker/picker';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
+import env from '../../env';
 
 
 const filters = {
@@ -27,7 +28,7 @@ export default function MatchesScreen() {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/matches');
+        const res = await fetch(`${env.API_BASE_URL}/matches`);
         const data = await res.json();
         setMatches(data);
       } catch (error) {
