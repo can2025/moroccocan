@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import LanguageSelector from '../../components/LanguageSelector';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n'; // Import the i18n instance directly
 
 const cities = [
   {
@@ -46,10 +49,13 @@ const cities = [
 
 export default function CitiesScreen() {
   const [selectedCity, setSelectedCity] = useState(cities[0]);
+  const { t } = useTranslation();
+  const currentLang = i18n.language;
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Host Cities</Text>
+       <LanguageSelector />
+      <Text style={styles.title}>{t('cities.cities')}</Text>
       
       <View style={styles.cityHeader}>
         <Text style={styles.cityName}>{selectedCity.name}</Text>

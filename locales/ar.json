@@ -1,0 +1,21 @@
+{
+  "news": {
+    "title": "الأخبار"
+  },
+  "match": {
+    "calendar": "المباريات"
+  },
+  "groups": {
+    "groups": "المجموعات"
+  },
+  "cities": {
+    "cities": "المدن المضيفة"
+  },
+  "home": {
+    "tournamentinfos": "معلومات البطولة",
+    "teams": "الفرق",
+    "groups": "المجموعات",
+    "cities": "المدن",
+    "matches": "المباريات"
+  }
+}

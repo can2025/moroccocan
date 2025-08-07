@@ -1,0 +1,22 @@
+{
+  "news": {
+    "title": "Actualités"
+  },
+  "match": {
+    "calendar": "Calendrier"
+  },
+  "groups": {
+    "groups": "Groupes"
+  }
+  ,
+  "cities": {
+    "cities": "Villes hôtes"
+  },
+  "home": {
+    "tournamentinfos": "Infos du Tournoie",
+    "teams": "Equipes",
+    "groups": "Groupes",
+    "cities": "Villes",
+    "matches": "Matches"
+  }
+}

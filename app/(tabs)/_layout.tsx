@@ -11,7 +11,7 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: '#2b0d0d',
           borderTopColor: '#3e1415',
-          height: 70,
+          height: 130,
           paddingBottom: 20,
           paddingTop: 10,
         },
@@ -58,15 +58,25 @@ export default function TabLayout() {
           ),
         }}
       />
+      
       <Tabs.Screen
-        name="predictions"
+        name="news"
         options={{
-          title: 'Predictions',
+          title: 'News',
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="trophy-outline" size={size} color="white" />
           ),
         }}
       />
+      <Tabs.Screen
+        name="newsDetails"
+        options={{
+          title: 'NewsDetails',
+          tabBarButton: () => null,
+          tabBarStyle: { display: 'none' },
+        }}
+      />
     </Tabs>
+    
   );
 }

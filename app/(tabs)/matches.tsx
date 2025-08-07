@@ -4,6 +4,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronDown, MapPin, ExternalLink } from 'lucide-react-native';
 import CountryFlag from "react-native-country-flag";
 import { Picker } from '@react-native-picker/picker';
+import LanguageSelector from '../../components/LanguageSelector';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n'; // Import the i18n instance directly
+
 
 const filters = {
   groups: ['All Groups', 'Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'Group F'],
@@ -17,6 +21,8 @@ export default function MatchesScreen() {
   const [selectedGroup, setSelectedGroup] = useState('All Groups');
   const [selectedDate, setSelectedDate] = useState('All Dates');
   const [selectedCity, setSelectedCity] = useState('All Cities');
+  const { t } = useTranslation();
+  const currentLang = i18n.language;
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -48,7 +54,8 @@ export default function MatchesScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Match Calendar</Text>
+      <LanguageSelector />
+      <Text style={styles.title}>{t('match.calendar')}</Text>
       {/* Filters */}
       <View style={styles.filtersContainer}>
         <View style={styles.filterRow}>

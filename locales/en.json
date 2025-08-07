@@ -1,0 +1,22 @@
+{
+  "news": {
+    "title": "News"
+  },
+  "match": {
+    "calendar": "Calendar"
+  },
+  "groups": {
+    "groups": "Groups"
+  },
+  "cities": {
+    "cities": "Cities Host"
+  },
+  "home": {
+    "tournamentinfos": "Tournament Info",
+    "teams": "Teams",
+    "groups": "Groups",
+    "cities": "Cities",
+    "matches": "Matches"
+  }
+  
+}

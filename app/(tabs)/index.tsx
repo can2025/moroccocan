@@ -4,10 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Play, MapPin, Trophy, Clock } from 'lucide-react-native';
 import CountryFlag from "react-native-country-flag"; // Use this for flags in React Native
+import LanguageSelector from '../../components/LanguageSelector';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n'; // Import the i18n instance directly
 
 export default function HomeScreen() {
   const [upcomingMatches, setUpcomingMatches] = useState<any[]>([]);
   const [loadingUpcoming, setLoadingUpcoming] = useState(true);
+  const { t } = useTranslation();
+  const currentLang = i18n.language;
 
   // Dummy data for live matches (replace with API fetch if needed)
   const [liveMatches, setLiveMatches] = useState<any[]>([
@@ -42,18 +47,30 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>     
-      <LinearGradient
+    <SafeAreaView style={styles.container}>  
+    <LinearGradient
   colors={['#2b0d0d', '#190504']}
   style={styles.header}
 >
-  <View style={styles.headerContent}>
-    <View style={styles.textContainer}>
-      <Text style={styles.title}>CAN 2025 Morocco</Text>
-      <Text style={styles.subtitle}>Africa Cup of Nations</Text>
+  {/* Top Row: Logo left, Language Selector right */}
+  <View style={styles.topRow}>
+    <Image
+      source={require('../../assets/images/afcon2025.png')}
+      style={styles.logo}
+      resizeMode="contain"
+    />
+    <View style={styles.languageSelector}>
+      <LanguageSelector />
     </View>
   </View>
+
+  {/* Centered Text Slightly Lower */}
+  <View style={styles.centerTextContainer}>
+    <Text style={styles.title}>CAN 2025 Morocco</Text>
+  </View>
 </LinearGradient>
+      
+    
       {/*
       <LinearGradient
   colors={['#2b0d0d', '#190504']}
@@ -156,25 +173,25 @@ export default function HomeScreen() {
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Trophy size={20} color="#E53E3E" />
-            <Text style={styles.sectionTitle}>Tournament Info</Text>
+            <Text style={styles.sectionTitle}>{t('home.tournamentinfos')}</Text>
           </View>
           
           <View style={styles.statsGrid}>
             <View style={styles.statCard}>
               <Text style={styles.statNumber}>24</Text>
-              <Text style={styles.statLabel}>Teams</Text>
+              <Text style={styles.statLabel}>{t('home.teams')}</Text>
             </View>
             <View style={styles.statCard}>
               <Text style={styles.statNumber}>6</Text>
-              <Text style={styles.statLabel}>Groups</Text>
+              <Text style={styles.statLabel}>{t('home.groups')}</Text>
             </View>
             <View style={styles.statCard}>
               <Text style={styles.statNumber}>6</Text>
-              <Text style={styles.statLabel}>Cities</Text>
+              <Text style={styles.statLabel}>{t('home.cities')}</Text>
             </View>
             <View style={styles.statCard}>
               <Text style={styles.statNumber}>52</Text>
-              <Text style={styles.statLabel}>Matches</Text>
+              <Text style={styles.statLabel}>{t('home.matches')}</Text>
             </View>
           </View>
         </View>
@@ -200,16 +217,37 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   header: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    height: 200,
+    justifyContent: 'flex-start',
+    paddingTop: 10,
+    paddingHorizontal: 10,
+    position: 'relative',
+  },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  logo: {
+    width: 79,
+    height: 140,
+  },
+  languageSelector: {
+    alignSelf: 'flex-start',
+  },
+  centerTextContainer: {
+    position: 'absolute',
+    top: 110, // Adjust to move text down
+    left: 0,
+    right: 0,
     alignItems: 'center',
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginBottom: 4,
+    color: 'white',
   },
+  
   subtitle: {
     fontSize: 16,
     color: '#E53E3E',

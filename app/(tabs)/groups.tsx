@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CountryFlag from "react-native-country-flag";
+import LanguageSelector from '../../components/LanguageSelector';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n'; // Import the i18n instance directly
+
 
 export default function GroupsScreen() {
   const [groupsData, setGroupsData] = useState<{ [key: string]: any[] }>({});
   const [selectedGroup, setSelectedGroup] = useState('All');
   const [selectedView, setSelectedView] = useState('Groups');
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
+  const currentLang = i18n.language;
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -34,7 +40,8 @@ export default function GroupsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Groups</Text>
+      <LanguageSelector />
+      <Text style={styles.title}>{t('groups.groups')}</Text>
       
       {/* View Selector */}
       <View style={styles.viewSelector}>
