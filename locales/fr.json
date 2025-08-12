@@ -3,21 +3,38 @@
     "title": "Actualités"
   },
   "match": {
-    "calendar": "Calendrier"
+    "calendar": "Calendrier",
+    "all" : "Tous",
+    "cities": "Villes",
+    "dates": "Dates",
+    "groups": "Groupes",
+    "buyticket": "Acheter un Billet"
   },
   "groups": {
     "groups": "Groupes"
   }
   ,
   "cities": {
-    "cities": "Villes hôtes"
+    "cities": "Villes hôtes",
+    "stadiuminfo": "Infos du Stade",
+    "stadiumcapacity": "Capacité du Stade",
+    "stadiumlocation": "Emplacement du Stade",
+    "viewonmap": "Voir sur la carte"
   },
   "home": {
+    "title": "CAN 2025 Morocco",
+    "subtitle": "Un continent, une passion",
     "tournamentinfos": "Infos du Tournoie",
     "teams": "Equipes",
     "groups": "Groupes",
     "cities": "Villes",
-    "matches": "Matches"
+    "matches": "Matches",
+    "live" : "En Direct",
+    "livenow" : "En Direct Maintenant",
+    "nolivematch" : "Aucun match en direct pour le moment",
+    "upcoming": "Prochains Matches",
+    "loading" : "Chargement ...",
+    "noupcomingmatch" :"Aucun match à venir."
   }
   ,
   "menu": {

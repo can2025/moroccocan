@@ -3,20 +3,37 @@
     "title": "الأخبار"
   },
   "match": {
-    "calendar": "المباريات"
+    "calendar": "المباريات",
+    "all": "الكل",
+    "cities": "المدن",
+    "dates": "التواريخ",
+    "groups": "المجموعات",
+    "buyticket": "شراء تذكرة"
   },
   "groups": {
     "groups": "المجموعات"
   },
   "cities": {
-    "cities": "المدن المضيفة"
+    "cities": "المدن المضيفة",
+    "stadiuminfo": "معلومات الملعب",
+    "stadiumcapacity": "سعة الملعب",
+    "stadiumlocation": "موقع الملعب",
+    "viewonmap": "عرض على الخريطة"
   },
   "home": {
+    "title": "كأس إفريقيا 2025 المغرب",
+    "subtitle": " قارة واحدة، شغف واحد",
     "tournamentinfos": "معلومات البطولة",
     "teams": "الفرق",
     "groups": "المجموعات",
     "cities": "المدن",
-    "matches": "المباريات"
+    "matches": "المباريات",
+    "live" : "مباشر",
+    "livenow" : "مباشر الآن",
+    "nolivematch" : "لا توجد مباريات مباشرة الآن",
+    "upcoming": "المباريات القادمة",
+    "loading" : "جاري التحميل ...",
+    "noupcomingmatch" :"لا توجد مباريات قادمة."
   },
     "menu": {
     "home": "إستقبال",

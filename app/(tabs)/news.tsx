@@ -49,7 +49,9 @@ export default function NewsScreen() {
 
   return (
     <View style={styles.container}>
-      <LanguageSelector />
+      <View style={styles.languages}>
+                <LanguageSelector />
+      </View>
       <Text style={styles.title}>{t('news.title')}</Text>
       
       <FlatList
@@ -103,6 +105,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.08,
     shadowRadius: 4,
     elevation: 2,
+  },
+  languages: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
   newsImage: {
     width: 70,

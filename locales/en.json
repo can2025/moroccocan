@@ -3,20 +3,37 @@
     "title": "News"
   },
   "match": {
-    "calendar": "Calendar"
+    "calendar": "Calendar",
+    "all" : "All",
+    "cities": "Cities",
+    "dates": "Dates",
+    "groups": "Groups",
+    "buyticket": "Buy Ticket"
   },
   "groups": {
     "groups": "Groups"
   },
   "cities": {
-    "cities": "Cities Host"
+    "cities": "Cities Host",
+    "stadiuminfo": "Stadium Info",
+    "stadiumcapacity": "Stadium Capacity",
+    "stadiumlocation": "Stadium Location",
+    "viewonmap": "View on Map"
   },
   "home": {
+    "title": "CAN 2025 Morocco",
+    "subtitle": "One Continent, One Passion",
     "tournamentinfos": "Tournament Info",
     "teams": "Teams",
     "groups": "Groups",
     "cities": "Cities",
-    "matches": "Matches"
+    "matches": "Matches",
+    "live" : "LIVE",
+    "livenow" : "LIVE NOW",
+    "nolivematch" : "No live matches now",
+    "upcoming": "Upcoming Matches",
+    "loading":  "Loading...",
+    "noupcomingmatch" :"No upcoming matches."
   },
   "menu": {
     "home": "Home",

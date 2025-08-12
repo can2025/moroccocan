@@ -67,103 +67,85 @@ export default function HomeScreen() {
 
   {/* Centered Text Slightly Lower */}
   <View style={styles.centerTextContainer}>
-    <Text style={styles.title}>CAN 2025 Morocco</Text>
+    <Text style={styles.title}>{t('home.title')}</Text>
+    <Text style={styles.subtitle}>{t('home.subtitle')}</Text>
   </View>
 </LinearGradient>
-      
-    
-      {/*
-      <LinearGradient
-  colors={['#2b0d0d', '#190504']}
-  style={styles.header}>
-  <View style={styles.headerContent}>
-    <View style={styles.textContainer}>
-      <Image
-          source={require('../../assets/images/afcon2025.png')}
-          style={{ width: 25, height: 50 }}
-          resizeMode="contain"
-      />
-      <View style={styles.texts}>
-        <Text style={styles.title}>CAN 2025 Morocco</Text>
-        <Text style={styles.subtitle}>Africa Cup of Nations</Text>
-      </View>
-    </View>
-  </View>
-</LinearGradient>
-*/}
+       
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Live Matches */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Play size={20} color="#E53E3E" />
-            <Text style={styles.sectionTitle}>Live Now</Text>
+            <Text style={styles.sectionTitle}>{t('home.livenow')}</Text>
           </View>
-          
-          {liveMatches.map((match) => (
-            <TouchableOpacity key={match.id} style={styles.liveMatchCard}>
-              <View style={styles.liveIndicator}>
-                <View style={styles.liveDot} />
-                <Text style={styles.liveText}>LIVE</Text>
-              </View>
-              
-              <View style={styles.matchInfo}>
-                <View style={styles.teamContainer}>
-                  <CountryFlag isoCode={match.homeFlag} size={25} style={styles.flag} />
-                  <Text style={styles.teamName}>{match.homeTeam}</Text>
-                  <Text style={styles.score}>{match.homeScore}</Text>
-                </View>
-                
-                <View style={styles.matchCenter}>
-                  <Text style={styles.minute}>{match.minute}</Text>
-                  <Text style={styles.vs}>-</Text>
-                </View>
-                
-                <View style={styles.teamContainer}>
-                  <Text style={styles.score}>{match.awayScore}</Text>
-                  <Text style={[styles.teamName, { margin: 10 }]}>{match.awayTeam}</Text>
-                  <CountryFlag isoCode={match.awayFlag} size={25} style={styles.flag} />
-                </View>
-              </View>
-              
-              <View style={styles.venueInfo}>
-                <MapPin size={14} color="#9CA3AF" />
-                <Text style={styles.venue}>{match.venue}, {match.city}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Upcoming Matches */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Clock size={20} color="#E53E3E" />
-            <Text style={styles.sectionTitle}>Upcoming</Text>
-          </View>
-          {loadingUpcoming ? (
-            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>Loading...</Text>
-          ) : upcomingMatches.length === 0 ? (
-            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>No upcoming matches.</Text>
+          {liveMatches.length === 0 ? (
+            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>
+              {t('home.nolivematch')}
+            </Text>
           ) : (
-            upcomingMatches.map((match) => (
-              <TouchableOpacity key={match._id || match.id} style={styles.matchCard}>
+            liveMatches.map((match) => (
+              <TouchableOpacity key={match.id} style={styles.liveMatchCard}>
+                <View style={styles.liveIndicator}>
+                  <View style={styles.liveDot} />
+                  <Text style={styles.liveText}>{t('home.live')}</Text>
+                </View>
                 <View style={styles.matchInfo}>
                   <View style={styles.teamContainer}>
                     <CountryFlag isoCode={match.homeFlag} size={25} style={styles.flag} />
                     <Text style={styles.teamName}>{match.homeTeam}</Text>
+                    <Text style={styles.score}>{match.homeScore}</Text>
                   </View>
                   <View style={styles.matchCenter}>
-                    <Text style={styles.matchTime}>{match.time}</Text>
-                    <Text style={styles.vs}>vs</Text>
-                    <Text style={styles.matchDate}>{match.date}</Text>
+                    <Text style={styles.minute}>{match.minute}</Text>
+                    <Text style={styles.vs}>-</Text>
                   </View>
                   <View style={styles.teamContainer}>
-                    <Text style={styles.teamName}>{match.awayTeam}</Text>
+                    <Text style={styles.score}>{match.awayScore}</Text>
+                    <Text style={[styles.teamName, { margin: 10 }]}>{match.awayTeam}</Text>
                     <CountryFlag isoCode={match.awayFlag} size={25} style={styles.flag} />
                   </View>
                 </View>
                 <View style={styles.venueInfo}>
                   <MapPin size={14} color="#9CA3AF" />
                   <Text style={styles.venue}>{match.venue}, {match.city}</Text>
+                </View>
+              </TouchableOpacity>
+            ))
+          )}
+        </View>
+
+        {/* Upcoming Matches */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Clock size={20} color="#E53E3E" />
+            <Text style={styles.sectionTitle}>{t('home.upcoming')}</Text>
+          </View>
+          {loadingUpcoming ? (
+            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>{t('home.loading')}</Text>
+          ) : upcomingMatches.length === 0 ? (
+            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>{t('home.noupcomingmatch')}</Text>
+          ) : (
+            upcomingMatches.map((match) => (
+              <TouchableOpacity key={match._id || match.id} style={styles.matchCard}>
+                <View style={styles.matchInfo}>
+                  <View style={styles.teamContainer}>
+                    <CountryFlag isoCode={match.homeFlag} size={25} style={styles.flag} />
+                    <Text style={styles.teamName}>{match[`homeTeam_${currentLang}`]}</Text>
+                  </View>
+                  <View style={styles.matchCenter}>
+                    <Text style={styles.matchTime}>{match.time}</Text>
+                    <Text style={styles.vs}>vs</Text>
+                    <Text style={styles.matchDate}>{match[`date_${currentLang}`]}</Text>
+                  </View>
+                  <View style={styles.teamContainer}>
+                    <Text style={styles.teamName}>{match[`awayTeam_${currentLang}`]}</Text>
+                    <CountryFlag isoCode={match.awayFlag} size={25} style={styles.flag} />
+                  </View>
+                </View>
+                <View style={styles.venueInfo}>
+                  <MapPin size={14} color="#9CA3AF" />
+                  <Text style={styles.venue}>{match[`venue_${currentLang}`]}, {match[`city_${currentLang}`]}</Text>
                 </View>
               </TouchableOpacity>
             ))
@@ -230,15 +212,15 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   logo: {
-    width: 79,
-    height: 140,
+    width: 60,
+    height: 106,
   },
   languageSelector: {
     alignSelf: 'flex-start',
   },
   centerTextContainer: {
     position: 'absolute',
-    top: 110, // Adjust to move text down
+    top: 50, // Adjust to move text down
     left: 0,
     right: 0,
     alignItems: 'center',

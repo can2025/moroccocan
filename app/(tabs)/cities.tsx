@@ -1,97 +1,93 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n'; // Import the i18n instance directly
+import i18n from '../../i18n';
+import env from '../../env';
 
-const cities = [
-  {
-    id: 1,
-    name: 'Marrakech',
-    isActive: true,
-    heritage: 'Marrakech – The Red City Awaits You! Step into the vibrant heart of Morocco in Marrakech, a city where ancient traditions and modern energy collide. From the bustling souks of the Medina to the majestic Koutoubia Mosque and the lively Jemaa el-Fnaa square, Marrakech offers an unforgettable cultural experience. AFCON fans can enjoy not only the excitement of football but also the warm hospitality, rich flavors, and iconic red architecture that make this city truly unique. Discover world-class cuisine, breathtaking gardens, and centuries-old palaces – all under the glowing Moroccan sun. Marrakech is more than a destination – it’s a celebration of life.',
-    football: 'Marrakech isn’t just a city of history, colors, and culture – it’s also a city that lives and breathes football. From lively street matches in local neighborhoods to passionate fans filling stadiums, the love for the beautiful game runs deep here. Home to the iconic Grand Stade de Marrakech, the city has hosted major African and international matches, welcoming fans from across the continent with open arms. As AFCON fever takes over, Marrakech offers an unbeatable mix of thrilling football moments and unforgettable cultural experiences – all in the heart of Morocco.',
-    stadium: 'Marrakesh Stadium',
-    capacity: '41,245',
-    images: [
-      'https://www.marrakech-cityguide.com/wp-content/uploads/Marrakech-place-koutoubia-e1609154215571.jpg?auto=compress&cs=tinysrgb&w=800',
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Stade_de_marrakech.jpg/960px-Stade_de_marrakech.jpg?auto=compress&cs=tinysrgb&w=800',
-    ],
-  },
-  {
-    id: 2,
-    name: 'Rabat',
-    isActive: false,
-    heritage: 'Rabat is the capital city of Morocco and the country\'s seventh largest city with an urban population of approximately 580,000. It is also the capital of the Rabat-Salé-Kénitra region. The city is located on the Atlantic Ocean at the mouth of the river Bou Regreg, opposite Salé, the city\'s main commuter town.',
-    football: 'Rabat hosts several important football venues and has been central to Moroccan football development. The city\'s sporting infrastructure includes multiple stadiums that have hosted significant national and international matches.',
-    stadium: 'Prince Moulay Abdellah Stadium',
-    capacity: '69,500',
-    images: [
-      'https://images.pexels.com/photos/11641690/pexels-photo-11641690.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/14901002/pexels-photo-14901002.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ],
-  },
-  {
-    id: 3,
-    name: 'Tangier',
-    isActive: false,
-    heritage: 'Tangier is a major city in northwestern Morocco. It is located on the Maghreb coast at the western entrance to the Strait of Gibraltar, where the Mediterranean Sea meets the Atlantic Ocean off Cape Spartel. The city is the capital of the Tanger-Tetouan-Al Hoceima region.',
-    football: 'Tangier\'s football scene is vibrant with the impressive Ibn Batouta Stadium serving as a modern venue for international matches. The city has produced talented players and maintains strong football traditions.',
-    stadium: 'Ibn Batouta Stadium',
-    capacity: '80,000',
-    images: [
-      'https://images.pexels.com/photos/10813896/pexels-photo-10813896.jpeg?auto=compress&cs=tinysrgb&w=800',
-      'https://images.pexels.com/photos/4930014/pexels-photo-4930014.jpeg?auto=compress&cs=tinysrgb&w=800',
-    ],
-  },
-];
+// Helper to split array into chunks of 3
+function chunkArray(arr: any[], size: number) {
+  const result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
 
 export default function CitiesScreen() {
-  const [selectedCity, setSelectedCity] = useState(cities[0]);
+  const [cities, setCities] = useState<any[]>([]);
+  const [selectedCity, setSelectedCity] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
   const currentLang = i18n.language;
 
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const res = await fetch(`${env.API_BASE_URL}/cities`);
+        const data = await res.json();
+        setCities(data);
+        setSelectedCity(data[0]);
+      } catch (error) {
+        console.error('Failed to fetch cities:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCities();
+  }, []);
+
+  // Split cities into rows of 3
+  const cityRows = chunkArray(cities, 3);
+
+  if (loading || !selectedCity) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <ActivityIndicator color="#E53E3E" size="large" style={{ marginTop: 40 }} />
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-       <LanguageSelector />
+      <View style={styles.languages}>
+        <LanguageSelector />
+      </View>
       <Text style={styles.title}>{t('cities.cities')}</Text>
-      
       <View style={styles.cityHeader}>
-        <Text style={styles.cityName}>{selectedCity.name}</Text>
-        
-        {/* City Selector */}
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false} 
-          style={styles.citySelector}
-        >
-          {cities.map((city) => (
-            <TouchableOpacity
-              key={city.id}
-              style={[
-                styles.cityButton,
-                selectedCity.id === city.id && styles.activeCityButton
-              ]}
-              onPress={() => setSelectedCity(city)}
-            >
-              <Text style={[
-                styles.cityButtonText,
-                selectedCity.id === city.id && styles.activeCityButtonText
-              ]}>{city.name}</Text>
-            </TouchableOpacity>
+        <Text style={styles.cityName}>{selectedCity[`name_${currentLang}`]}</Text>
+        {/* City Selector as 2-row grid */}
+        <View style={styles.citySelectorGrid}>
+          {cityRows.map((row, rowIndex) => (
+            <View key={rowIndex} style={styles.citySelectorRow}>
+              {row.map((city) => (
+                <TouchableOpacity
+                  key={city.id}
+                  style={[
+                    styles.cityButtonGrid,
+                    selectedCity._id === city._id && styles.activeCityButton
+                  ]}
+                  onPress={() => setSelectedCity(city)}
+                >
+                  <Text style={[
+                    styles.cityButtonText,
+                    selectedCity._id === city._id && styles.activeCityButtonText
+                  ]}>{city[`name_${currentLang}`]}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
           ))}
-        </ScrollView>
+        </View>
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Cultural Heritage */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Cultural Heritage</Text>
-          <Text style={styles.description}>{selectedCity.heritage}</Text>
-          
+          <Text style={styles.sectionTitle}>{selectedCity[`title1_${currentLang}`]}</Text>
+          <Text style={styles.description}>{selectedCity[`content1_${currentLang}`]}</Text>
           <View style={styles.imageGrid}>
-            {selectedCity.images.map((image, index) => (
+            {[selectedCity.image1, selectedCity.image2].map((image, index) => (
               <Image
                 key={index}
                 source={{ uri: image }}
@@ -102,27 +98,25 @@ export default function CitiesScreen() {
           </View>
         </View>
 
-        {/* Football History */}
+        {/* What to Do in the City */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Football History</Text>
-          <Text style={styles.description}>{selectedCity.football}</Text>
-          
-          <View style={styles.stadiumInfo}>
-            <Text style={styles.stadiumName}>{selectedCity.stadium}</Text>
-            <Text style={styles.capacity}>Capacity: {selectedCity.capacity}</Text>
-          </View>
+          <Text style={styles.sectionTitle}>{selectedCity[`title2_${currentLang}`]}</Text>
+          <Text style={styles.description}>{selectedCity[`content2_${currentLang}`]}</Text>
         </View>
 
         {/* Stadium Details */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Stadium Information</Text>
+          <Text style={styles.sectionTitle}>{t('cities.stadiuminfo') || 'Stadium Information'}</Text>
           <View style={styles.stadiumCard}>
-            <Text style={styles.stadiumCardName}>{selectedCity.stadium}</Text>
-            <Text style={styles.stadiumCardCapacity}>Capacity: {selectedCity.capacity}</Text>
-            <Text style={styles.stadiumCardLocation}>Location: {selectedCity.name}, Morocco</Text>
-            
+            <Text style={styles.stadiumCardName}>{selectedCity[`stadiumname_${currentLang}`]}</Text>
+            <Text style={styles.stadiumCardCapacity}>
+              {t('cities.stadiumcapacity') || 'Capacity'}: {selectedCity.stadiumcapacity}
+            </Text>
+            <Text style={styles.stadiumCardLocation}>
+              {t('cities.stadiumlocation') || 'Location'}: {selectedCity.stadiumlocation}
+            </Text>
             <TouchableOpacity style={styles.mapButton}>
-              <Text style={styles.mapButtonText}>View on Map</Text>
+              <Text style={styles.mapButtonText}>{t('cities.viewonmap') || 'View on Map'}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -143,6 +137,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 20,
   },
+  languages: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
+  },
   cityHeader: {
     paddingHorizontal: 20,
     marginBottom: 20,
@@ -153,15 +153,31 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     marginBottom: 16,
   },
-  citySelector: {
+  citySelectorGrid: {
     marginBottom: 16,
+  },
+  citySelectorRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  cityButtonGrid: {
+    flex: 1,
+    backgroundColor: '#2b0d0d',
+    paddingHorizontal: 10,
+    paddingVertical: 12,
+    borderRadius: 20,
+    marginHorizontal: 4,
+    borderWidth: 1,
+    borderColor: '#3e1415',
+    alignItems: 'center',
   },
   cityButton: {
     backgroundColor: '#2b0d0d',
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 20,
-    marginRight: 12,
+    marginBottom: 8,
     borderWidth: 1,
     borderColor: '#3e1415',
   },

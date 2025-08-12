@@ -24,8 +24,8 @@ export default function GroupsScreen() {
         // Transform flat array into grouped object
         const grouped: { [key: string]: any[] } = {};
         data.forEach((team: any) => {
-          if (!grouped[team.group]) grouped[team.group] = [];
-          grouped[team.group].push(team);
+          if (!grouped[team[`group_${currentLang}`]]) grouped[team[`group_${currentLang}`]] = [];
+          grouped[team.group_en].push(team);
         });
         setGroupsData(grouped);
       } catch (error) {
@@ -41,7 +41,9 @@ export default function GroupsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LanguageSelector />
+      <View style={styles.languages}>
+          <LanguageSelector />
+      </View>
       <Text style={styles.title}>{t('groups.groups')}</Text>
       
       {/* View Selector */}
@@ -152,7 +154,7 @@ export default function GroupsScreen() {
                     <View style={styles.teamCell}>
                       <Text style={styles.position}>{index + 1}</Text>
                       <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
-                      <Text style={styles.teamName}>{team.name}</Text>
+                      <Text style={styles.teamName}>{team[`name_${currentLang}`]}</Text>
                     </View>
                     <Text style={styles.cell}>{team.mp}</Text>
                     <Text style={styles.cell}>{team.gf}</Text>
@@ -184,7 +186,7 @@ export default function GroupsScreen() {
                   <View style={styles.teamCell}>
                     <Text style={styles.position}>{index + 1}</Text>
                     <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
-                    <Text style={styles.teamName}>{team.name}</Text>
+                    <Text style={styles.teamName}>{team[`name_${currentLang}`]}</Text>
                   </View>
                   <Text style={styles.cell}>{team.mp}</Text>
                   <Text style={styles.cell}>{team.gf}</Text>
@@ -211,6 +213,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     paddingVertical: 20,
+  },
+  languages: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
   viewSelector: {
     flexDirection: 'row',

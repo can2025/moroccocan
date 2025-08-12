@@ -9,19 +9,13 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
 import env from '../../env';
 
-
-const filters = {
-  groups: ['All Groups', 'Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'Group F'],
-  dates: ['All Dates', 'Dec 21', 'Dec 22', 'Dec 23', 'Dec 24'],
-  cities: ['All Cities', 'Rabat', 'Casablanca', 'Tangier', 'Marrakech', 'Agadir', 'Fez'],
-};
-
 export default function MatchesScreen() {
+  const ALL_VALUE = 'ALL';
   const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedGroup, setSelectedGroup] = useState('All Groups');
-  const [selectedDate, setSelectedDate] = useState('All Dates');
-  const [selectedCity, setSelectedCity] = useState('All Cities');
+  const [selectedGroup, setSelectedGroup] = useState(ALL_VALUE);
+  const [selectedDate, setSelectedDate] = useState(ALL_VALUE);
+  const [selectedCity, setSelectedCity] = useState(ALL_VALUE);
   const { t } = useTranslation();
   const currentLang = i18n.language;
 
@@ -40,89 +34,130 @@ export default function MatchesScreen() {
     fetchMatches();
   }, []);
 
-  // Dynamically compute filter options
-  const groupOptions = ['All Groups', ...Array.from(new Set(matches.map(m => m.group)))];
-  const dateOptions = ['All Dates', ...Array.from(new Set(matches.map(m => m.date)))];
-  const cityOptions = ['All Cities', ...Array.from(new Set(matches.map(m => m.city)))];
+  // Dynamically compute filter options with sentinel "ALL" value
+  const groupOptions = [
+    { label: t('match.all'), value: ALL_VALUE },
+    ...Array.from(new Set(matches.map(m => m[`group_${currentLang}`]))).map(g => ({ label: g, value: g }))
+  ];
 
+  const dateOptions = [
+    { label: t('match.all'), value: ALL_VALUE },
+    ...Array.from(new Set(matches.map(m => m[`date_${currentLang}`]))).map(d => ({ label: d, value: d }))
+  ];
+
+  const cityOptions = [
+    { label: t('match.all'), value: ALL_VALUE },
+    ...Array.from(new Set(matches.map(m => m[`city_${currentLang}`]))).map(c => ({ label: c, value: c }))
+  ];
+
+  // Filtering using sentinel ALL_VALUE
   const filteredMatches = matches.filter(match => {
     return (
-      (selectedGroup === 'All Groups' || match.group === selectedGroup) &&
-      (selectedDate === 'All Dates' || match.date === selectedDate) &&
-      (selectedCity === 'All Cities' || match.city === selectedCity)
+      (selectedGroup === ALL_VALUE || match[`group_${currentLang}`] === selectedGroup) &&
+      (selectedDate === ALL_VALUE || match[`date_${currentLang}`] === selectedDate) &&
+      (selectedCity === ALL_VALUE || match[`city_${currentLang}`] === selectedCity)
     );
   });
 
   return (
     <SafeAreaView style={styles.container}>
-      <LanguageSelector />
+      <View style={styles.languages}>
+        <LanguageSelector />
+      </View>
       <Text style={styles.title}>{t('match.calendar')}</Text>
       {/* Filters */}
       <View style={styles.filtersContainer}>
         <View style={styles.filterRow}>
           {/* Group Filter */}
-          <Picker
-            selectedValue={selectedGroup}
-            style={styles.filterPicker}
-            onValueChange={(itemValue) => setSelectedGroup(itemValue)}
-          >
-            {groupOptions.map((group) => (
-              <Picker.Item key={group} label={group} value={group} />
-            ))}
-          </Picker>
+          <View style={styles.filterWrapper}>
+            <Text style={styles.filterLabel}>{t('match.groups')}</Text>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={selectedGroup}
+                style={styles.filterPicker}
+                onValueChange={setSelectedGroup}
+                dropdownIconColor="#fff"
+              >
+                {groupOptions.map(opt => (
+                  <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
+                ))}
+              </Picker>
+            </View>
+          </View>
           {/* Date Filter */}
-          <Picker
-            selectedValue={selectedDate}
-            style={styles.filterPicker}
-            onValueChange={(itemValue) => setSelectedDate(itemValue)}
-          >
-            {dateOptions.map((date) => (
-              <Picker.Item key={date} label={date} value={date} />
-            ))}
-          </Picker>
+          <View style={styles.filterWrapper}>
+            <Text style={styles.filterLabel}>{t('match.dates')}</Text>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={selectedDate}
+                style={styles.filterPicker}
+                onValueChange={setSelectedDate}
+                dropdownIconColor="#fff"
+              >
+                {dateOptions.map(opt => (
+                  <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
+                ))}
+              </Picker>
+            </View>
+          </View>
           {/* City Filter */}
-          <Picker
-            selectedValue={selectedCity}
-            style={styles.filterPicker}
-            onValueChange={(itemValue) => setSelectedCity(itemValue)}
-          >
-            {cityOptions.map((city) => (
-              <Picker.Item key={city} label={city} value={city} />
-            ))}
-          </Picker>
+          <View style={styles.filterWrapper}>
+            <Text style={styles.filterLabel}>{t('match.cities')}</Text>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={selectedCity}
+                style={styles.filterPicker}
+                onValueChange={setSelectedCity}
+                dropdownIconColor="#fff"
+              >
+                {cityOptions.map(opt => (
+                  <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
+                ))}
+              </Picker>
+            </View>
+          </View>
         </View>
       </View>
+
+      {/* Matches list */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.section}>
           {loading ? (
             <ActivityIndicator color="#E53E3E" size="large" style={{ marginTop: 40 }} />
           ) : filteredMatches.length === 0 ? (
-            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>No matches found.</Text>
+            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>{t('home.upcoming')}</Text>
           ) : (
-            filteredMatches.map((match) => (
+            filteredMatches.map(match => (
               <View key={match._id || match.id} style={styles.matchCard}>
+                {/* Teams */}
                 <View style={styles.matchInfo}>
                   <View style={styles.teamContainer}>
                     <CountryFlag isoCode={match.homeFlag} size={25} style={styles.flag} />
-                    <Text style={styles.teamName}>{match.homeTeam}</Text>
+                    <Text style={styles.teamName}>{match[`homeTeam_${currentLang}`]}</Text>
                   </View>
                   <View style={styles.matchCenter}>
                     <Text style={styles.vs}>vs.</Text>
                   </View>
                   <View style={styles.teamContainer}>
-                    <Text style={styles.teamName}>{match.awayTeam}</Text>
+                    <Text style={styles.teamName}>{match[`awayTeam_${currentLang}`]}</Text>
                     <CountryFlag isoCode={match.awayFlag} size={25} style={styles.flag} />
                   </View>
                 </View>
+                {/* Match details */}
                 <View style={styles.matchDetails}>
-                  <Text style={styles.matchDate}>{match.date} | {match.time}</Text>
+                  <Text style={styles.matchDate}>
+                    {match[`date_${currentLang}`]} | {match.time}
+                  </Text>
                   <View style={styles.venueInfo}>
                     <MapPin size={14} color="#9CA3AF" />
-                    <Text style={styles.venue}>{match.venue} | {match.city}</Text>
+                    <Text style={styles.venue}>
+                      {match[`venue_${currentLang}`]} | {match[`city_${currentLang}`]}
+                    </Text>
                   </View>
                 </View>
+                {/* Ticket button */}
                 <TouchableOpacity style={styles.buyTicketButton}>
-                  <Text style={styles.buyTicketText}>Buy Tickets</Text>
+                  <Text style={styles.buyTicketText}>{t('match.buyticket')}</Text>
                   <ExternalLink size={16} color="#FFFFFF" />
                 </TouchableOpacity>
               </View>
@@ -133,6 +168,7 @@ export default function MatchesScreen() {
     </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -146,6 +182,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 20,
   },
+  languages: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
+  },
   filtersContainer: {
     paddingHorizontal: 20,
     marginBottom: 20,
@@ -154,11 +196,30 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  filterPicker: {
+  filterWrapper: {
     flex: 1,
-    color: '#fff',
-    backgroundColor: '#2b0d0d',
     marginHorizontal: 4,
+  },
+  filterLabel: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 4,
+    marginLeft: 4,
+  },
+  pickerContainer: {
+    backgroundColor: '#E53E3E',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#E53E3E',
+    overflow: 'hidden',
+    marginBottom: 8,
+  },
+  filterPicker: {
+    color: '#fff',
+    backgroundColor: '#3e1415',
+    width: '100%',
+    height: 40,
   },
   content: {
     flex: 1,
@@ -191,10 +252,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    gap: 8, // Add gap for consistent spacing (React Native >=0.71)
+    gap: 8,
   },
   flag: {
-    marginHorizontal: 8, // fallback for older React Native versions
+    marginHorizontal: 8,
   },
   teamName: {
     fontSize: 16,

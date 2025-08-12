@@ -28,7 +28,9 @@ export default function NewsDetailScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-       <LanguageSelector />
+       <View style={styles.languages}>
+          <LanguageSelector />
+       </View>
        <Text style={styles.title}>{t('news.title')}</Text> 
 
       <View style={styles.header}>
@@ -76,6 +78,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     paddingVertical: 20,
+  },
+  languages: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
   },
   backButton: {
     padding: 8,
