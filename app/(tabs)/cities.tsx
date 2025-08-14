@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { View, Text, Linking, ScrollView, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +21,20 @@ export default function CitiesScreen() {
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
   const currentLang = i18n.language;
+
+  const handlePress = () => {
+  const url = selectedCity.stadiumlocation;
+  // Vérifie si l'URL est accessible, puis ouvre
+  Linking.canOpenURL(url)
+    .then((supported) => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        console.log("Impossible d'ouvrir l'URL :", url);
+      }
+    })
+    .catch((err) => console.error('Erreur lors de l\'ouverture de l\'URL', err));
+};
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -113,10 +127,9 @@ export default function CitiesScreen() {
               {t('cities.stadiumcapacity') || 'Capacity'}: {selectedCity.stadiumcapacity}
             </Text>
             <Text style={styles.stadiumCardLocation}>
-              {t('cities.stadiumlocation') || 'Location'}: {selectedCity.stadiumlocation}
-            </Text>
-            <TouchableOpacity style={styles.mapButton}>
-              <Text style={styles.mapButtonText}>{t('cities.viewonmap') || 'View on Map'}</Text>
+              {t('cities.stadiumlocation') || 'Location'}:</Text>
+            <TouchableOpacity style={styles.mapButton} onPress={handlePress}>
+                <Text style={styles.mapButtonText}>{t('cities.viewonmap') || 'View on Map'}</Text>
             </TouchableOpacity>
           </View>
         </View>

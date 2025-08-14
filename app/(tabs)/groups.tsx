@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import CountryFlag from "react-native-country-flag";
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n'; // Import the i18n instance directly
+import i18n from '../../i18n';
 import env from '../../env';
 
 
@@ -150,7 +150,7 @@ export default function GroupsScreen() {
                 
                 {/* Table Rows */}
                 {groupsData[groupKey]?.map((team, index) => (
-                  <View key={team.name} style={styles.tableRow}>
+                  <View key={team.id} style={styles.tableRow}>
                     <View style={styles.teamCell}>
                       <Text style={styles.position}>{index + 1}</Text>
                       <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
@@ -182,7 +182,7 @@ export default function GroupsScreen() {
               
               {/* Table Rows */}
               {groupsData[selectedGroup]?.map((team, index) => (
-                <View key={team.name} style={styles.tableRow}>
+                <View key={team.id} style={styles.tableRow}>
                   <View style={styles.teamCell}>
                     <Text style={styles.position}>{index + 1}</Text>
                     <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
