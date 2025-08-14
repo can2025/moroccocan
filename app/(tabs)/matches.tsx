@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronDown, MapPin, ExternalLink } from 'lucide-react-native';
+import { Platform } from 'react-native';
 import CountryFlag from "react-native-country-flag";
 import { Picker } from '@react-native-picker/picker';
 import LanguageSelector from '../../components/LanguageSelector';
@@ -76,7 +77,8 @@ export default function MatchesScreen() {
                 selectedValue={selectedGroup}
                 style={styles.filterPicker}
                 onValueChange={setSelectedGroup}
-                dropdownIconColor="#fff"
+                dropdownIconColor="#3e1415"
+                itemStyle={styles.pickerItemStyle}
               >
                 {groupOptions.map(opt => (
                   <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
@@ -92,7 +94,8 @@ export default function MatchesScreen() {
                 selectedValue={selectedDate}
                 style={styles.filterPicker}
                 onValueChange={setSelectedDate}
-                dropdownIconColor="#fff"
+                dropdownIconColor="#3e1415"
+                itemStyle={styles.pickerItemStyle}
               >
                 {dateOptions.map(opt => (
                   <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
@@ -108,7 +111,8 @@ export default function MatchesScreen() {
                 selectedValue={selectedCity}
                 style={styles.filterPicker}
                 onValueChange={setSelectedCity}
-                dropdownIconColor="#fff"
+                dropdownIconColor="#3e1415"
+                itemStyle={styles.pickerItemStyle}
               >
                 {cityOptions.map(opt => (
                   <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
@@ -208,19 +212,25 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   pickerContainer: {
-    backgroundColor: '#E53E3E',
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#E53E3E',
     overflow: 'hidden',
     marginBottom: 8,
+    justifyContent: 'center',
   },
   filterPicker: {
     color: '#fff',
-    backgroundColor: '#3e1415',
     width: '100%',
-    height: 40,
+    height: Platform.OS === 'ios' ? 40 : 40,
+    backgroundColor: '#3e1415',
   },
+  pickerItemStyle: {
+  height: 40,
+  fontSize: 14,
+  color: '#fff',
+  textAlignVertical: 'center', // Mostly Android
+},
   content: {
     flex: 1,
     paddingHorizontal: 20,

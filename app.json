@@ -1,20 +1,47 @@
 {
   "expo": {
-    "name": "bolt-expo-nativewind",
-    "slug": "bolt-expo-nativewind",
+    "name": "CAN 2025",
+    "slug": "can-2025",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logocan520x520-white.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
+    "title": "AFCON 2025 - Coupe d'Afrique des Nations | Fixtures, Results & News",
+    "description": "Stay up to date with AFCON 2025 (Coupe d'Afrique des Nations) in Morocco. Get the latest fixtures, results, team news, standings, and highlights from Africa's biggest football tournament.",
+    "privacy": "public",
+    "keywords": [
+      "AFCON 2025",
+      "CAN 2025",
+      "Coupe d'Afrique des Nations 2025",
+      "African Cup of Nations",
+      "AFCON Morocco 2025",
+      "AFCON fixtures",
+      "AFCON results",
+      "AFCON teams",
+      "AFCON news",
+      "Africa football tournament",
+      "CAF tournament 2025"
+    ],
     "web": {
       "bundler": "metro",
       "output": "single",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logocan520x520-white.png"
+    },
+    "android": {
+      "package": "com.afcon2025.morocco",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logocan520x520-white.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "softwareKeyboardLayoutMode": "pan"
+    },
+    "ios": {
+      "bundleIdentifier": "RJC69B7449",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true
     },
     "plugins": [
       "expo-router",
@@ -24,6 +51,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "37e98109-02ac-4b3e-be4b-7528ec64f39b"
+      }
     }
   }
 }
