@@ -56,7 +56,7 @@ export default function NewsScreen() {
       
       <FlatList
         data={news}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.newsItem}

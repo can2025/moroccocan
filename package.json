@@ -55,6 +55,7 @@
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
     "@types/react-world-flags": "^1.6.0",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "@react-native-community/cli": "latest"
   }
 }

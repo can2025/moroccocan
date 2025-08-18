@@ -7,6 +7,7 @@ import CountryFlag from "react-native-country-flag";
 import { Picker } from '@react-native-picker/picker';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
+import { I18nManager } from 'react-native';
 import i18n from '../../i18n'; // Import the i18n instance directly
 import env from '../../env';
 
@@ -72,13 +73,22 @@ export default function MatchesScreen() {
           {/* Group Filter */}
           <View style={styles.filterWrapper}>
             <Text style={styles.filterLabel}>{t('match.groups')}</Text>
-            <View style={styles.pickerContainer}>
+            <View style={[
+              styles.pickerContainer,
+              Platform.OS === 'android' && I18nManager.isRTL && { flexDirection: 'row-reverse' }
+            ]}>
               <Picker
                 selectedValue={selectedGroup}
-                style={styles.filterPicker}
+                style={[
+                  styles.filterPicker,
+                  Platform.OS === 'ios' && I18nManager.isRTL && { textAlign: 'right' }
+                ]}
                 onValueChange={setSelectedGroup}
                 dropdownIconColor="#3e1415"
-                itemStyle={styles.pickerItemStyle}
+                itemStyle={[
+                  styles.pickerItemStyle,
+                  Platform.OS === 'ios' && I18nManager.isRTL && { textAlign: 'right' }
+                ]}
               >
                 {groupOptions.map(opt => (
                   <Picker.Item key={opt.value} label={opt.label} value={opt.value} />
@@ -193,8 +203,8 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   filtersContainer: {
-    paddingHorizontal: 20,
-    marginBottom: 20,
+    paddingHorizontal: 2,
+    marginBottom: 2,
   },
   filterRow: {
     flexDirection: 'row',
@@ -202,17 +212,17 @@ const styles = StyleSheet.create({
   },
   filterWrapper: {
     flex: 1,
-    marginHorizontal: 4,
+    marginHorizontal: 2,
   },
   filterLabel: {
     color: '#fff',
     fontSize: 14,
     fontWeight: '600',
-    marginBottom: 4,
-    marginLeft: 4,
+    marginBottom: 2,
+    marginLeft: 2,
   },
   pickerContainer: {
-    borderRadius: 8,
+    borderRadius: 2,
     borderWidth: 1,
     borderColor: '#E53E3E',
     overflow: 'hidden',
@@ -222,15 +232,16 @@ const styles = StyleSheet.create({
   filterPicker: {
     color: '#fff',
     width: '100%',
-    height: Platform.OS === 'ios' ? 40 : 40,
+    height: Platform.OS === 'ios' ? 40 : 53,
     backgroundColor: '#3e1415',
+
   },
   pickerItemStyle: {
-  height: 40,
-  fontSize: 14,
-  color: '#fff',
-  textAlignVertical: 'center', // Mostly Android
-},
+    height: 40,
+    fontSize: 14,
+    color: '#fff',
+    textAlign: 'left', // default for LTR
+  },
   content: {
     flex: 1,
     paddingHorizontal: 20,
