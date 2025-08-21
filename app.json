@@ -8,22 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "title": "AFCON 2025 - Coupe d'Afrique des Nations | Fixtures, Results & News",
-    "description": "Stay up to date with AFCON 2025 (Coupe d'Afrique des Nations) in Morocco. Get the latest fixtures, results, team news, standings, and highlights from Africa's biggest football tournament.",
-    "privacy": "public",
-    "keywords": [
-      "AFCON 2025",
-      "CAN 2025",
-      "Coupe d'Afrique des Nations 2025",
-      "African Cup of Nations",
-      "AFCON Morocco 2025",
-      "AFCON fixtures",
-      "AFCON results",
-      "AFCON teams",
-      "AFCON news",
-      "Africa football tournament",
-      "CAF tournament 2025"
-    ],
+    "description": "Stay up to date with AFCON 2025 (Coupe d'Afrique des Nations) in Morocco. Get the latest fixtures, results, team news, standings, and highlights from Africa's biggest football tournament.",  
     "web": {
       "bundler": "metro",
       "output": "single",
@@ -39,15 +24,18 @@
       "softwareKeyboardLayoutMode": "pan"
     },
     "ios": {
-      "bundleIdentifier": "RJC69B7449",
+      "bundleIdentifier": "com.can2025.morocco",
       "buildNumber": "1.0.0",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "This app may access the camera through built-in features or third-party libraries."
+      }
     },
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-web-browser",
-      "expo-localization"
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

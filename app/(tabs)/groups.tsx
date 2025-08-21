@@ -24,8 +24,9 @@ export default function GroupsScreen() {
         // Transform flat array into grouped object
         const grouped: { [key: string]: any[] } = {};
         data.forEach((team: any) => {
-          if (!grouped[team[`group_${currentLang}`]]) grouped[team[`group_${currentLang}`]] = [];
-          grouped[team.group_en].push(team);
+          const groupKey = team[`group_${currentLang}`];  // consistent key
+          if (!grouped[groupKey]) grouped[groupKey] = [];
+          grouped[groupKey].push(team);
         });
         setGroupsData(grouped);
       } catch (error) {
@@ -42,10 +43,10 @@ export default function GroupsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.languages}>
-          <LanguageSelector />
+        <LanguageSelector />
       </View>
       <Text style={styles.title}>{t('groups.groups')}</Text>
-      
+
       {/* View Selector */}
       <View style={styles.viewSelector}>
         <TouchableOpacity
@@ -60,7 +61,7 @@ export default function GroupsScreen() {
             selectedView === 'Groups' && styles.activeViewButtonText
           ]}>Groups</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={[
             styles.viewButton,
@@ -137,7 +138,7 @@ export default function GroupsScreen() {
           Object.keys(groupsData).filter(key => key !== 'All').map((groupKey) => (
             <View key={groupKey} style={styles.section}>
               <Text style={styles.sectionTitle}>{groupKey}</Text>
-              
+
               <View style={styles.table}>
                 {/* Table Header */}
                 <View style={styles.tableHeader}>
@@ -147,7 +148,7 @@ export default function GroupsScreen() {
                   <Text style={styles.headerCell}>GA</Text>
                   <Text style={styles.headerCell}>Pts</Text>
                 </View>
-                
+
                 {/* Table Rows */}
                 {groupsData[groupKey]?.map((team, index) => (
                   <View key={team.id} style={styles.tableRow}>
@@ -169,7 +170,7 @@ export default function GroupsScreen() {
           // Show single group
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>{selectedGroup}</Text>
-            
+
             <View style={styles.table}>
               {/* Table Header */}
               <View style={styles.tableHeader}>
@@ -179,7 +180,7 @@ export default function GroupsScreen() {
                 <Text style={styles.headerCell}>GA</Text>
                 <Text style={styles.headerCell}>Pts</Text>
               </View>
-              
+
               {/* Table Rows */}
               {groupsData[selectedGroup]?.map((team, index) => (
                 <View key={team.id} style={styles.tableRow}>
