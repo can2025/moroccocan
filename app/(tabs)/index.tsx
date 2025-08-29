@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Play, MapPin, Trophy, Clock } from 'lucide-react-native';
@@ -8,6 +8,8 @@ import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
 import env from '../../env';
+//@ts-ignore
+import BannerBlock from '../../components/BannerBlock';
 
 export default function HomeScreen() {
   const [upcomingMatches, setUpcomingMatches] = useState<any[]>([]);
@@ -48,30 +50,30 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>  
-    <LinearGradient
-  colors={['#2b0d0d', '#190504']}
-  style={styles.header}
->
-  {/* Top Row: Logo left, Language Selector right */}
-  <View style={styles.topRow}>
-    <Image
-      source={require('../../assets/images/afcon2025.png')}
-      style={styles.logo}
-      resizeMode="contain"
-    />
-    <View style={styles.languageSelector}>
-      <LanguageSelector />
-    </View>
-  </View>
+    <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={['#2b0d0d', '#190504']}
+        style={styles.header}
+      >
+        {/* Top Row: Logo left, Language Selector right */}
+        <View style={styles.topRow}>
+          <Image
+            source={require('../../assets/images/afcon2025.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <View style={styles.languageSelector}>
+            <LanguageSelector />
+          </View>
+        </View>
 
-  {/* Centered Text Slightly Lower */}
-  <View style={styles.centerTextContainer}>
-    <Text style={styles.title}>{t('home.title')}</Text>
-    <Text style={styles.subtitle}>{t('home.subtitle')}</Text>
-  </View>
-</LinearGradient>
-       
+        {/* Centered Text Slightly Lower */}
+        <View style={styles.centerTextContainer}>
+          <Text style={styles.title}>{t('home.title')}</Text>
+          <Text style={styles.subtitle}>{t('home.subtitle')}</Text>
+        </View>
+      </LinearGradient>
+
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Live Matches */}
         <View style={styles.section}>
@@ -114,6 +116,13 @@ export default function HomeScreen() {
             ))
           )}
         </View>
+
+        {/* Banner Ad Block */}
+        {Platform.OS !== 'web' && (
+          <View style={styles.bannerContainer}>
+            <BannerBlock />
+          </View>
+        )}
 
         {/* Upcoming Matches */}
         <View style={styles.section}>
@@ -158,7 +167,7 @@ export default function HomeScreen() {
             <Trophy size={20} color="#E53E3E" />
             <Text style={styles.sectionTitle}>{t('home.tournamentinfos')}</Text>
           </View>
-          
+
           <View style={styles.statsGrid}>
             <View style={styles.statCard}>
               <Text style={styles.statNumber}>24</Text>
@@ -206,6 +215,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     position: 'relative',
   },
+  bannerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
+  },
   topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -230,7 +244,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-  
+
   subtitle: {
     fontSize: 16,
     color: '#E53E3E',

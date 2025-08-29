@@ -1,19 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  SafeAreaView,
-} from 'react-native';
+import { Platform, View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, SafeAreaView, } from 'react-native';
 import { ArrowLeft, Bookmark } from 'lucide-react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import LanguageSelector from '../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n'; // Import the i18n instance directly
-
+//@ts-ignore
+import BannerBlock from '../components/BannerBlock';
 
 
 
@@ -21,17 +14,17 @@ export default function NewsDetailScreen() {
   const params = useLocalSearchParams();
   const { t } = useTranslation();
   const currentLang = i18n.language;
-  const { category, image, date} = params;
+  const { category, image, date } = params;
   const content = params[`content_${currentLang}`] || params.content_en || '';
   const title = params[`title_${currentLang}`] || params.title_en || '';
 
 
   return (
     <SafeAreaView style={styles.container}>
-       <View style={styles.languages}>
-          <LanguageSelector />
-       </View>
-       <Text style={styles.title}>{t('news.title')}</Text> 
+      <View style={styles.languages}>
+        <LanguageSelector />
+      </View>
+      <Text style={styles.title}>{t('news.title')}</Text>
 
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.push('/news')} style={styles.backButton}>
@@ -52,6 +45,12 @@ export default function NewsDetailScreen() {
             <Text style={styles.categoryTag}>{category}</Text>
             <Text style={styles.publishDate}>{date}</Text>
           </View>
+          {/* Banner Ad Block */}
+          {Platform.OS !== 'web' && (
+            <View style={styles.bannerContainer}>
+              <BannerBlock />
+            </View>
+          )}
           <Text style={styles.articleContent}>{content}</Text>
         </View>
       </ScrollView>
@@ -107,6 +106,11 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
   },
+  bannerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
+  },
   articleTitle: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -141,7 +145,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 20,
   },
-    languageSelector: {
+  languageSelector: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 16,

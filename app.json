@@ -8,7 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "description": "Stay up to date with AFCON 2025 (Coupe d'Afrique des Nations) in Morocco. Get the latest fixtures, results, team news, standings, and highlights from Africa's biggest football tournament.",  
+    "description": "Stay up to date with AFCON 2025 (Coupe d'Afrique des Nations) in Morocco. Get the latest fixtures, results, team news, standings, and highlights from Africa's biggest football tournament.",
     "web": {
       "bundler": "metro",
       "output": "single",
@@ -18,24 +18,40 @@
       "package": "com.afcon2025.morocco",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logocan520x520.png",
+        "foregroundImage": "./assets/images/logocan520x520-white.png",
         "backgroundColor": "#FFFFFF"
       },
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMobileAds": {
+          "androidAppId": "ca-app-pub-6970333913715429~1099551914"
+        }
+      }
     },
     "ios": {
       "bundleIdentifier": "com.can2025.morocco",
       "buildNumber": "1.0.6",
+      "config": {
+        "googleMobileAds": {
+          "iosAppId": "ca-app-pub-6970333913715429~7843835928"
+        }
+      },
       "supportsTablet": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSCameraUsageDescription": "This app may access the camera through built-in features or third-party libraries."
       }
+      
     },
     "plugins": [
-      "expo-router",
-      "expo-font",
-      "expo-web-browser"
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-6970333913715429~1099551914n",
+          "iosAppId": "ca-app-pub-6970333913715429~7843835928"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
@@ -46,6 +62,6 @@
         "projectId": "37e98109-02ac-4b3e-be4b-7528ec64f39b"
       }
     },
-    "owner": "outhman"
+    "owner": "Moorverse"
   }
 }

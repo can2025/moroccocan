@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Platform, View, I18nManager, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronDown, MapPin, ExternalLink } from 'lucide-react-native';
-import { Platform } from 'react-native';
 import CountryFlag from "react-native-country-flag";
 import { Picker } from '@react-native-picker/picker';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
-import { I18nManager } from 'react-native';
 import i18n from '../../i18n'; // Import the i18n instance directly
 import env from '../../env';
+//@ts-ignore
+import BannerBlock from '../../components/BannerBlock';
 
 export default function MatchesScreen() {
   const ALL_VALUE = 'ALL';
@@ -132,7 +132,12 @@ export default function MatchesScreen() {
           </View>
         </View>
       </View>
-
+      {/* Banner Ad Block */}
+      {Platform.OS !== 'web' && (
+        <View style={styles.bannerContainer}>
+          <BannerBlock />
+        </View>
+      )}
       {/* Matches list */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.section}>
@@ -228,6 +233,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 8,
     justifyContent: 'center',
+  },
+  bannerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
   },
   filterPicker: {
     color: '#fff',

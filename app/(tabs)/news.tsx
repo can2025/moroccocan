@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { Platform, View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
-import env from '../../env'; 
+import env from '../../env';
+//@ts-ignore
+import BannerBlock from '../../components/BannerBlock';
 
 
 type NewsItem = {
@@ -30,7 +32,7 @@ export default function NewsScreen() {
 
   const [news, setNews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -50,10 +52,16 @@ export default function NewsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.languages}>
-                <LanguageSelector />
+        <LanguageSelector />
       </View>
       <Text style={styles.title}>{t('news.title')}</Text>
       
+      {Platform.OS !== 'web' && (
+        <View style={styles.bannerContainer}>
+          <BannerBlock />
+        </View>
+      )}
+
       <FlatList
         data={news}
         keyExtractor={item => item._id}
@@ -72,7 +80,7 @@ export default function NewsScreen() {
         )}
         contentContainerStyle={styles.listContent}
       />
-      
+
     </View>
   );
 }
@@ -105,6 +113,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.08,
     shadowRadius: 4,
     elevation: 2,
+  },
+  bannerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
   },
   languages: {
     position: 'absolute',

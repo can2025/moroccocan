@@ -5,7 +5,6 @@ import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import env from '../../env';
-//@ts-ignore
 import BannerBlock from '../../components/BannerBlock';
 
 // Helper to split array into chunks of 3

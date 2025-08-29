@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Platform, View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CountryFlag from "react-native-country-flag";
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import env from '../../env';
+//@ts-ignore
+import BannerBlock from '../../components/BannerBlock';
+
 
 
 export default function GroupsScreen() {
@@ -129,6 +132,13 @@ export default function GroupsScreen() {
           ))}
         </View>
       </View>
+      {/* Banner Ad Block */}
+      {Platform.OS !== 'web' && (
+        <View style={styles.bannerContainer}>
+          <BannerBlock />
+        </View>
+      )}
+
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {loading ? (
@@ -225,6 +235,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     marginBottom: 20,
+  },
+  bannerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
   },
   viewButton: {
     flex: 1,
