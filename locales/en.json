@@ -11,7 +11,8 @@
     "buyticket": "Buy Ticket"
   },
   "groups": {
-    "groups": "Groups"
+    "groups": "Groups",
+    "teams": "Teams"
   },
   "cities": {
     "cities": "Cities Host",

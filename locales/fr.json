@@ -11,7 +11,8 @@
     "buyticket": "Acheter un Billet"
   },
   "groups": {
-    "groups": "Groupes"
+    "groups": "Groupes",
+    "teams": "Equipes"
   }
   ,
   "cities": {

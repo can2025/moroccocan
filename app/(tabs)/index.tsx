@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
 import env from '../../env';
 //@ts-ignore
-import BannerBlock from '../../components/BannerBlock';
+import BannerBlock from '../../components/BannerBlock2';
 
 export default function HomeScreen() {
   const [upcomingMatches, setUpcomingMatches] = useState<any[]>([]);
@@ -76,6 +76,7 @@ export default function HomeScreen() {
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Live Matches */}
+        {/* Live Matches 
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Play size={20} color="#E53E3E" />
@@ -116,13 +117,8 @@ export default function HomeScreen() {
             ))
           )}
         </View>
-
-        {/* Banner Ad Block */}
-        {Platform.OS !== 'web' && (
-          <View style={styles.bannerContainer}>
-            <BannerBlock />
-          </View>
-        )}
+          */}
+        
 
         {/* Upcoming Matches */}
         <View style={styles.section}>
@@ -160,6 +156,12 @@ export default function HomeScreen() {
             ))
           )}
         </View>
+        {/* Banner Ad Block */}
+        {Platform.OS !== 'web' && (
+          <View style={styles.bannerContainer}>
+            <BannerBlock />
+          </View>
+        )}
 
         {/* Tournament Stats */}
         <View style={styles.section}>

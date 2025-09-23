@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import env from '../../env';
 //@ts-ignore
-import BannerBlock from '../../components/BannerBlock';
+import BannerBlock from '../../components/BannerBlock2';
 
 // Helper to split array into chunks of 3
 function chunkArray(arr: any[], size: number) {
@@ -96,12 +96,7 @@ export default function CitiesScreen() {
           ))}
         </View>
       </View>
-      {/* Banner Ad Block */}
-      {Platform.OS !== 'web' && (
-        <View style={styles.bannerContainer}>
-          <BannerBlock />
-        </View>
-      )}
+
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Cultural Heritage */}
         <View style={styles.section}>
@@ -124,7 +119,12 @@ export default function CitiesScreen() {
           <Text style={styles.sectionTitle}>{selectedCity[`title2_${currentLang}`]}</Text>
           <Text style={styles.description}>{selectedCity[`content2_${currentLang}`]}</Text>
         </View>
-
+        {/* Banner Ad Block */}
+        {Platform.OS !== 'web' && (
+          <View style={styles.bannerContainer}>
+            <BannerBlock />
+          </View>
+        )}
         {/* Stadium Details */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{t('cities.stadiuminfo') || 'Stadium Information'}</Text>

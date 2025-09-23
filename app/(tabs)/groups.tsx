@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import env from '../../env';
 //@ts-ignore
-import BannerBlock from '../../components/BannerBlock';
+import BannerBlock from '../../components/BannerBlock2';
 
 
 
@@ -24,14 +24,16 @@ export default function GroupsScreen() {
       try {
         const res = await fetch(`${env.API_BASE_URL}/groups`);
         const data = await res.json();
+        console.log('Fetched groups data:', data);
         // Transform flat array into grouped object
         const grouped: { [key: string]: any[] } = {};
-        data.forEach((team: any) => {
-          const groupKey = team[`group_${currentLang}`];  // consistent key
+        Object.entries(data).forEach(([group_en, team]) => {
+          const teamObj = team as Record<string, any>;
+          const groupKey = teamObj[`group_${currentLang}`];  // consistent key
           if (!grouped[groupKey]) grouped[groupKey] = [];
-          grouped[groupKey].push(team);
+          grouped[groupKey].push(teamObj);
         });
-        setGroupsData(grouped);
+        setGroupsData(data);
       } catch (error) {
         console.error('Failed to fetch groups:', error);
       } finally {
@@ -62,7 +64,7 @@ export default function GroupsScreen() {
           <Text style={[
             styles.viewButtonText,
             selectedView === 'Groups' && styles.activeViewButtonText
-          ]}>Groups</Text>
+          ]}>{t('groups.groups')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -152,11 +154,14 @@ export default function GroupsScreen() {
               <View style={styles.table}>
                 {/* Table Header */}
                 <View style={styles.tableHeader}>
-                  <Text style={[styles.headerCell, styles.teamHeader]}>Team</Text>
-                  <Text style={styles.headerCell}>MP</Text>
-                  <Text style={styles.headerCell}>GF</Text>
-                  <Text style={styles.headerCell}>GA</Text>
-                  <Text style={styles.headerCell}>Pts</Text>
+                  <Text style={[styles.headerCell, styles.teamHeader]}>{t('groups.teams')}</Text>
+                  <Text style={styles.headerCell1}>MP</Text>
+                  <Text style={styles.headerCell1}>W</Text>
+                  <Text style={styles.headerCell1}>L</Text>
+                  <Text style={styles.headerCell1}>D</Text>
+                  <Text style={styles.headerCell1}>GF</Text>
+                  <Text style={styles.headerCell1}>GA</Text>
+                  <Text style={styles.headerCell1}>Pts</Text>
                 </View>
 
                 {/* Table Rows */}
@@ -164,13 +169,16 @@ export default function GroupsScreen() {
                   <View key={team.id} style={styles.tableRow}>
                     <View style={styles.teamCell}>
                       <Text style={styles.position}>{index + 1}</Text>
-                      <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
+                      <CountryFlag isoCode={team.flag} size={20} style={styles.flag} />
                       <Text style={styles.teamName}>{team[`name_${currentLang}`]}</Text>
                     </View>
-                    <Text style={styles.cell}>{team.mp}</Text>
-                    <Text style={styles.cell}>{team.gf}</Text>
-                    <Text style={styles.cell}>{team.ga}</Text>
-                    <Text style={[styles.cell, styles.pointsCell]}>{team.pts}</Text>
+                    <Text style={styles.cell1}>{team.mp}</Text>
+                    <Text style={styles.cell1}>{team.w}</Text>
+                    <Text style={styles.cell1}>{team.l}</Text>
+                    <Text style={styles.cell1}>{team.d}</Text>
+                    <Text style={styles.cell1}>{team.gf}</Text>
+                    <Text style={styles.cell1}>{team.ga}</Text>
+                    <Text style={[styles.cell1, styles.pointsCell]}>{team.pts}</Text>
                   </View>
                 ))}
               </View>
@@ -184,11 +192,14 @@ export default function GroupsScreen() {
             <View style={styles.table}>
               {/* Table Header */}
               <View style={styles.tableHeader}>
-                <Text style={[styles.headerCell, styles.teamHeader]}>Team</Text>
-                <Text style={styles.headerCell}>MP</Text>
-                <Text style={styles.headerCell}>GF</Text>
-                <Text style={styles.headerCell}>GA</Text>
-                <Text style={styles.headerCell}>Pts</Text>
+                <Text style={[styles.headerCell, styles.teamHeader]}>{t('groups.teams')}</Text>
+                <Text style={styles.headerCell1}>MP</Text>
+                <Text style={styles.headerCell1}>W</Text>
+                <Text style={styles.headerCell1}>L</Text>
+                <Text style={styles.headerCell1}>D</Text>
+                <Text style={styles.headerCell1}>GF</Text>
+                <Text style={styles.headerCell1}>GA</Text>
+                <Text style={styles.headerCell1}>Pts</Text>
               </View>
 
               {/* Table Rows */}
@@ -199,10 +210,13 @@ export default function GroupsScreen() {
                     <CountryFlag isoCode={team.flag} size={25} style={styles.flag} />
                     <Text style={styles.teamName}>{team[`name_${currentLang}`]}</Text>
                   </View>
-                  <Text style={styles.cell}>{team.mp}</Text>
-                  <Text style={styles.cell}>{team.gf}</Text>
-                  <Text style={styles.cell}>{team.ga}</Text>
-                  <Text style={[styles.cell, styles.pointsCell]}>{team.pts}</Text>
+                  <Text style={styles.cell1}>{team.mp}</Text>
+                  <Text style={styles.cell1}>{team.w}</Text>
+                  <Text style={styles.cell1}>{team.l}</Text>
+                  <Text style={styles.cell1}>{team.d}</Text>
+                  <Text style={styles.cell1}>{team.gf}</Text>
+                  <Text style={styles.cell1}>{team.ga}</Text>
+                  <Text style={[styles.cell1, styles.pointsCell]}>{team.pts}</Text>
                 </View>
               ))}
             </View>
@@ -322,7 +336,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFFFFF',
     textAlign: 'center',
-    width: 40,
+    width: 35,
+  },
+  headerCell1: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    width: 25,
   },
   teamHeader: {
     flex: 1,
@@ -348,19 +369,27 @@ const styles = StyleSheet.create({
     width: 24,
   },
   teamName: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '600',
     color: '#FFFFFF',
     flex: 1,
+    textAlign: 'left',
   },
   cell: {
     fontSize: 14,
     color: '#FFFFFF',
     textAlign: 'center',
-    width: 40,
+    width: 35,
   },
+  cell1: {
+    fontSize: 14,
+    color: '#FFFFFF',
+    textAlign: 'center',
+    width: 25,
+  },
+  
   flag: {
-    marginHorizontal: 8, // fallback for older React Native versions
+    marginHorizontal: 5, // fallback for older React Native versions
   },
   pointsCell: {
     fontWeight: 'bold',

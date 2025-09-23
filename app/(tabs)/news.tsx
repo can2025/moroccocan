@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n'; // Import the i18n instance directly
 import env from '../../env';
 //@ts-ignore
-import BannerBlock from '../../components/BannerBlock';
+import BannerBlock from '../../components/BannerBlock2';
 
 
 type NewsItem = {

@@ -5,19 +5,24 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Feather from '@expo/vector-icons/Feather';
 import i18n from '../../i18n';
 import { useTranslation } from 'react-i18next';
-import { Chrome as Home, Calendar, Users, MapPin, Target } from 'lucide-react-native';
+import { Platform, View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+//@ts-ignore
+import BannerBlock from '../../components/BannerBlock';
+
 
 export default function TabLayout() {
   const { t } = useTranslation();
   const currentLang = i18n.language;
   return (
+
+    <>
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
           backgroundColor: '#2b0d0d',
           borderTopColor: '#3e1415',
-          height: 110,
+          height: 90,
           paddingBottom: 20,
           paddingTop: 10,
         },
@@ -76,6 +81,44 @@ export default function TabLayout() {
       />
 
     </Tabs>
+
+    {/* Banner Ad Block */}
+          {Platform.OS !== 'web' && (
+            <View style={styles.bannerContainer}>
+              <BannerBlock />
+            </View>
+          )}
+    </>
     
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#190504',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    paddingVertical: 20,
+  },
+  languages: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1,
+  },
+  viewSelector: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  bannerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
+  },
+})

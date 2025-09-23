@@ -6,7 +6,7 @@ import LanguageSelector from '../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import i18n from '../i18n'; // Import the i18n instance directly
 //@ts-ignore
-import BannerBlock from '../components/BannerBlock';
+import BannerBlock from '../components/BannerBlock2';
 
 
 
