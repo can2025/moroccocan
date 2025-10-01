@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Platform, View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Play, MapPin, Trophy, Clock } from 'lucide-react-native';
+import { CalendarClock,Cast, MapPin, Trophy, Clock } from 'lucide-react-native';
 import CountryFlag from "react-native-country-flag"; // Use this for flags in React Native
 import LanguageSelector from '../../components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
@@ -151,6 +151,12 @@ export default function HomeScreen() {
                 <View style={styles.venueInfo}>
                   <MapPin size={14} color="#9CA3AF" />
                   <Text style={styles.venue}>{match[`venue_${currentLang}`]}, {match[`city_${currentLang}`]}</Text>
+                </View>
+                <View style={styles.venueInfo}>
+                    <Cast size={14} color="#9CA3AF" />
+                    <Text style={styles.venue}>
+                      {match[`channel_${currentLang}`]}
+                    </Text>
                 </View>
               </TouchableOpacity>
             ))
@@ -360,7 +366,7 @@ const styles = StyleSheet.create({
   venue: {
     fontSize: 14,
     color: '#FFFFFF',
-    marginLeft: 4,
+    margin: 4,
   },
   statsGrid: {
     flexDirection: 'row',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, View, I18nManager, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Platform, View, I18nManager, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronDown, MapPin, ExternalLink } from 'lucide-react-native';
+import { MapPin, Cast, CalendarClock, ExternalLink } from 'lucide-react-native';
 import CountryFlag from "react-native-country-flag";
 import { Picker } from '@react-native-picker/picker';
 import LanguageSelector from '../../components/LanguageSelector';
@@ -155,7 +155,9 @@ export default function MatchesScreen() {
                     <Text style={styles.teamName}>{match[`homeTeam_${currentLang}`]}</Text>
                   </View>
                   <View style={styles.matchCenter}>
-                    <Text style={styles.vs}>vs.</Text>
+                    <Text style={styles.matchTime}>{match.time}</Text>
+                    <Text style={styles.vs}>vs</Text>
+                    <Text style={styles.matchDate}>{match[`date_${currentLang}`]}</Text>
                   </View>
                   <View style={styles.teamContainer}>
                     <Text style={styles.teamName}>{match[`awayTeam_${currentLang}`]}</Text>
@@ -164,18 +166,21 @@ export default function MatchesScreen() {
                 </View>
                 {/* Match details */}
                 <View style={styles.matchDetails}>
-                  <Text style={styles.matchDate}>
-                    {match[`date_${currentLang}`]} | {match.time}
-                  </Text>
                   <View style={styles.venueInfo}>
                     <MapPin size={14} color="#9CA3AF" />
                     <Text style={styles.venue}>
                       {match[`venue_${currentLang}`]} | {match[`city_${currentLang}`]}
                     </Text>
                   </View>
+                  <View style={styles.venueInfo}>
+                    <Cast size={14} color="#9CA3AF" />
+                    <Text style={styles.venue}>
+                      {match[`channel_${currentLang}`]}
+                    </Text>
+                  </View>
                 </View>
                 {/* Ticket button */}
-                <TouchableOpacity style={styles.buyTicketButton}>
+                <TouchableOpacity style={styles.buyTicketButton} onPress={() => Linking.openURL(match.buyTicketlink)}>
                   <Text style={styles.buyTicketText}>{t('match.buyticket')}</Text>
                   <ExternalLink size={16} color="#FFFFFF" />
                 </TouchableOpacity>
@@ -312,6 +317,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 4,
   },
+  matchTime: {
+    fontSize: 14,
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
   venueInfo: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -319,7 +329,7 @@ const styles = StyleSheet.create({
   venue: {
     fontSize: 14,
     color: '#FFFFFF',
-    marginLeft: 4,
+    margin: 4,
   },
   buyTicketButton: {
     backgroundColor: '#E53E3E',

@@ -61,23 +61,7 @@ export default function GroupsScreen() {
           ]}
           onPress={() => setSelectedView('Groups')}
         >
-          <Text style={[
-            styles.viewButtonText,
-            selectedView === 'Groups' && styles.activeViewButtonText
-          ]}>{t('groups.groups')}</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[
-            styles.viewButton,
-            selectedView === 'Knockout' && styles.activeViewButton
-          ]}
-          onPress={() => setSelectedView('Knockout')}
-        >
-          <Text style={[
-            styles.viewButtonText,
-            selectedView === 'Knockout' && styles.activeViewButtonText
-          ]}>Knockout</Text>
         </TouchableOpacity>
       </View>
 
