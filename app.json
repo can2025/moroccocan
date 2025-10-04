@@ -2,7 +2,7 @@
   "expo": {
     "name": "CAN 2025",
     "slug": "bolt-expo-nativewind",
-    "version": "1.1.1",
+    "version": "1.2.1",
     "orientation": "portrait",
     "icon": "./assets/images/logocan1024.png",
     "scheme": "myapp",
@@ -31,7 +31,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.can2025.morocco",
-      "buildNumber": "1.1.1",
+      "buildNumber": "1.2.1",
       "config": {
         "googleMobileAds": {
           "iosAppId": "ca-app-pub-6970333913715429~7843835928"
