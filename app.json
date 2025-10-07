@@ -2,7 +2,7 @@
   "expo": {
     "name": "CAN 2025",
     "slug": "bolt-expo-nativewind",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "orientation": "portrait",
     "icon": "./assets/images/logocan1024.png",
     "scheme": "myapp",
@@ -17,6 +17,8 @@
     "android": {
       "package": "com.afcon2025.morocco",
       "versionCode": 1,
+      "permissions": ["com.google.android.gms.permission.AD_ID"],
+      "icon": "./assets/images/logocan520x520-white.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logocan520x520-white.png",
         "backgroundColor": "#FFFFFF"
@@ -31,7 +33,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.can2025.morocco",
-      "buildNumber": "1.2.2",
+      "buildNumber": "1.2.3",
       "config": {
         "googleMobileAds": {
           "iosAppId": "ca-app-pub-6970333913715429~7843835928"
