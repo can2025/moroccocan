@@ -48,7 +48,7 @@ export default function NewsDetailScreen() {
           {/* Banner Ad Block */}
           {Platform.OS !== 'web' && (
             <View style={styles.bannerContainer}>
-              <BannerBlock />
+              <BannerBlock screenName="news" />
             </View>
           )}
           <Text style={styles.articleContent}>{content}</Text>

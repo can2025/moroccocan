@@ -17,10 +17,12 @@
     "android": {
       "package": "com.afcon2025.morocco",
       "versionCode": 1,
-      "permissions": ["com.google.android.gms.permission.AD_ID"],
-      "icon": "./assets/images/logocan520x520-white.png",
+      "permissions": [
+        "com.google.android.gms.permission.AD_ID"
+      ],
+      "icon": "./assets/images/logocan1024.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logocan520x520-white.png",
+        "foregroundImage": "./assets/images/logocan1024.png",
         "backgroundColor": "#FFFFFF"
       },
       "softwareKeyboardLayoutMode": "pan",
@@ -44,7 +46,6 @@
         "ITSAppUsesNonExemptEncryption": false,
         "NSCameraUsageDescription": "This app may access the camera through built-in features or third-party libraries."
       }
-      
     },
     "plugins": [
       [
@@ -53,7 +54,10 @@
           "androidAppId": "ca-app-pub-6970333913715429~1099551914",
           "iosAppId": "ca-app-pub-6970333913715429~7843835928"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-router",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

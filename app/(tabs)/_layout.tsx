@@ -7,7 +7,7 @@ import i18n from '../../i18n';
 import { useTranslation } from 'react-i18next';
 import { Platform, View, Text, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 //@ts-ignore
-import BannerBlock from '../../components/BannerBlock';
+import BannerBlock from '../../components/BannerBlock2';
 
 
 export default function TabLayout() {
@@ -85,7 +85,7 @@ export default function TabLayout() {
     {/* Banner Ad Block */}
           {Platform.OS !== 'web' && (
             <View style={styles.bannerContainer}>
-              <BannerBlock />
+              <BannerBlock screenName="home" />
             </View>
           )}
     </>

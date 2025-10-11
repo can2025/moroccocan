@@ -122,7 +122,7 @@ export default function CitiesScreen() {
         {/* Banner Ad Block */}
         {Platform.OS !== 'web' && (
           <View style={styles.bannerContainer}>
-            <BannerBlock />
+            <BannerBlock screenName="cities" />
           </View>
         )}
         {/* Stadium Details */}

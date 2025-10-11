@@ -24,7 +24,6 @@ export default function GroupsScreen() {
       try {
         const res = await fetch(`${env.API_BASE_URL}/groups`);
         const data = await res.json();
-        console.log('Fetched groups data:', data);
         // Transform flat array into grouped object
         const grouped: { [key: string]: any[] } = {};
         Object.entries(data).forEach(([group_en, team]) => {
@@ -121,7 +120,7 @@ export default function GroupsScreen() {
       {/* Banner Ad Block */}
       {Platform.OS !== 'web' && (
         <View style={styles.bannerContainer}>
-          <BannerBlock />
+          <BannerBlock screenName="groups" />
         </View>
       )}
 

@@ -58,7 +58,7 @@ export default function NewsScreen() {
       
       {Platform.OS !== 'web' && (
         <View style={styles.bannerContainer}>
-          <BannerBlock />
+          <BannerBlock screenName="news" />
         </View>
       )}
 

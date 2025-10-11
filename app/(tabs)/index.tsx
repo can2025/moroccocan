@@ -165,7 +165,7 @@ export default function HomeScreen() {
         {/* Banner Ad Block */}
         {Platform.OS !== 'web' && (
           <View style={styles.bannerContainer}>
-            <BannerBlock />
+            <BannerBlock screenName="home" />
           </View>
         )}
 

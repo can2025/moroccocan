@@ -135,7 +135,7 @@ export default function MatchesScreen() {
       {/* Banner Ad Block */}
       {Platform.OS !== 'web' && (
         <View style={styles.bannerContainer}>
-          <BannerBlock />
+          <BannerBlock screenName="matches" />
         </View>
       )}
       {/* Matches list */}
