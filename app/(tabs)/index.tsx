@@ -75,51 +75,7 @@ export default function HomeScreen() {
       </LinearGradient>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Live Matches */}
-        {/* Live Matches 
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Play size={20} color="#E53E3E" />
-            <Text style={styles.sectionTitle}>{t('home.livenow')}</Text>
-          </View>
-          {liveMatches.length === 0 ? (
-            <Text style={{ color: '#fff', textAlign: 'center', marginTop: 40 }}>
-              {t('home.nolivematch')}
-            </Text>
-          ) : (
-            liveMatches.map((match) => (
-              <TouchableOpacity key={match.id} style={styles.liveMatchCard}>
-                <View style={styles.liveIndicator}>
-                  <View style={styles.liveDot} />
-                  <Text style={styles.liveText}>{t('home.live')}</Text>
-                </View>
-                <View style={styles.matchInfo}>
-                  <View style={styles.teamContainer}>
-                    <CountryFlag isoCode={match.homeFlag} size={25} style={styles.flag} />
-                    <Text style={styles.teamName}>{match.homeTeam}</Text>
-                    <Text style={styles.score}>{match.homeScore}</Text>
-                  </View>
-                  <View style={styles.matchCenter}>
-                    <Text style={styles.minute}>{match.minute}</Text>
-                    <Text style={styles.vs}>-</Text>
-                  </View>
-                  <View style={styles.teamContainer}>
-                    <Text style={styles.score}>{match.awayScore}</Text>
-                    <Text style={[styles.teamName, { margin: 10 }]}>{match.awayTeam}</Text>
-                    <CountryFlag isoCode={match.awayFlag} size={25} style={styles.flag} />
-                  </View>
-                </View>
-                <View style={styles.venueInfo}>
-                  <MapPin size={14} color="#9CA3AF" />
-                  <Text style={styles.venue}>{match.venue}, {match.city}</Text>
-                </View>
-              </TouchableOpacity>
-            ))
-          )}
-        </View>
-          */}
         
-
         {/* Upcoming Matches */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>

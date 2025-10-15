@@ -5,7 +5,7 @@ import { getDatabase } from 'firebase/database';
 const firebaseConfig = {
   apiKey: "AIzaSyAbobrnsfxRyl81BUmoBIklGzqEF9LcdRQ",
   authDomain: "banneradscan2025.firebaseapp.com",
-  databaseURL: "https://banneradscan2025-default-rtdb.firebaseio.com",
+  databaseURL: "https://banneradscan2025-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "banneradscan2025",
   storageBucket: "banneradscan2025.appspot.com",
   messagingSenderId: "269622138763",

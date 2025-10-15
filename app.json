@@ -2,7 +2,7 @@
   "expo": {
     "name": "CAN 2025",
     "slug": "bolt-expo-nativewind",
-    "version": "1.2.3",
+    "version": "1.3.1",
     "orientation": "portrait",
     "icon": "./assets/images/logocan1024.png",
     "scheme": "myapp",
